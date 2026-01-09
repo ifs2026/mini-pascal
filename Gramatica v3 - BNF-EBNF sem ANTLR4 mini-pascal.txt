@@ -1,3 +1,6 @@
+// Gramatica para o projeto Compilador mini-pascal
+// Falta converter para a sintaxe ANTLR4 para poder criar com JAVA utilizando VSCode
+
 grammar MiniPascal;
 
 program
@@ -27,7 +30,7 @@ type_
     | BOOLEAN
     ;
 
-/* ... demais regras da sua EBNF adaptadas ... */
+/* ... demais regras da EBNF ... */
 
 /* Léxico (tokens) */
 PROGRAM : 'program';
