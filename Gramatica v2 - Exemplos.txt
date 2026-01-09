@@ -1,0 +1,35 @@
+// Exemplo de código válido
+
+program exemploValido;
+var
+    x, y: integer;
+    z: real;
+begin
+    read(x, y);
+    z := x + y * 2;
+    if z > 10 then
+        print('maior que 10', z)
+    else
+        print('menor ou igual a 10', z);
+    for x := 1 to 5 do
+        print(x);
+end.
+
+// Exemplo de código inválido
+
+program exemploInvalido
+var
+    x, y integer     { ERRO: falta ":" entre identificadores e tipo }
+    z: real
+
+begin
+    read(x y);       { ERRO: falta "," entre os parâmetros }
+    z := x + ;       { ERRO: expressão incompleta, operador sem operando }
+    if z > 10        { ERRO: falta "then" }
+        print('maior que 10', z)
+    else
+        print('menor ou igual a 10' z);  { ERRO: falta "," antes de z }
+
+    for i := 1 to 5  { ERRO: variável i não declarada e falta "do" }
+        print(i)
+end                  { ERRO: falta "." ao final do programa }
