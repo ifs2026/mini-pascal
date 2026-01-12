@@ -1,0 +1,36 @@
+// ===============================
+
+program Erro1;
+begin
+    print('Sem ponto final')
+end   // falta o "."
+
+// ===============================
+
+program Erro2;
+begin
+    x := 10;   // "x" não foi declarado
+end.
+
+// ===============================
+
+program Erro3;
+var
+    a : integer;
+begin
+    if a = 10 print('Erro');  // falta "then"
+end.
+
+// ===============================
+
+program Erro4;
+var
+    x : integer;
+begin
+    x := 'texto';   // atribuição inválida: string em variável integer
+end.
+
+// ===============================
+
+
+
