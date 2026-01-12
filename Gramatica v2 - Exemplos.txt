@@ -1,4 +1,4 @@
-// Exemplo de código válido
+// Exemplo de código válido.
 
 program exemploValido;
 var
