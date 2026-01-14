@@ -1,12 +1,19 @@
-Gramática da Mini‑Linguagem MiniPascal (BNF/EBNF) – Comentada
+// Colaboradores/Alunos:
 
-1. Regra inicial
+// Enaldo Dantas  - jose.santos259@academico.ifs.edu.br
+// Agnaldo Neto   - jose.neto044@academico.ifs.edu.br
+// Vitorio Mota   - vitorio.mota085@academico.ifs.edu.br
+// Lucas Oliveira - lucas.oliveira031@academico.ifs.edu.br
+
+// Gramática da Mini‑Linguagem MiniPascal (BNF/EBNF) – Comentada
+
+// 1. Regra inicial
 
 <program> ::= "program" <identifier> ";" <block> "."
 // Um programa começa com a palavra‑chave program, seguida de um identificador (nome do programa), um ponto e vírgula ;,
 // depois um bloco <block> e termina com um ponto final ..
 
-2. Regras sintáticas (BNF/EBNF)
+// 2. Regras sintáticas (BNF/EBNF)
 
 <program> ::= "program" <identifier> ";" <block> "."
 // Regra inicial da linguagem: estrutura completa de um programa.
@@ -110,7 +117,7 @@ Gramática da Mini‑Linguagem MiniPascal (BNF/EBNF) – Comentada
 <string-char> ::= qualquer caractere exceto "'" e quebra de linha
 // Caracteres permitidos dentro da string: qualquer um, menos apóstrofo e quebras de linha.
 
-3. Precedência e associatividade de operadores
+// 3. Precedência e associatividade de operadores
 
 // Ordem da menor para a maior precedência:
 // 1) Operadores relacionais (=, <>, <, <=, >=, >)
@@ -123,16 +130,16 @@ Gramática da Mini‑Linguagem MiniPascal (BNF/EBNF) – Comentada
 // Todos os operadores binários associam à esquerda.
 // Exemplo: a - b - c é interpretado como (a - b) - c.
 
-4. Exemplos de programas VÁLIDOS
+// 4. Exemplos de programas VÁLIDOS
 
-4.1. Exemplo 1 – programa mínimo
+// 4.1. Exemplo 1 – programa mínimo
 program p;
 var x: integer;
 begin
   x := 10;
 end.
 
-4.2. Exemplo 2 – if/else e expressão lógica
+// 4.2. Exemplo 2 – if/else e expressão lógica
 program testeIf;
 var x: integer; y: integer;
 begin
@@ -144,7 +151,7 @@ begin
     print(y);
 end.
 
-4.3. Exemplo 3 – laço while
+// 4.3. Exemplo 3 – laço while
 program testeWhile;
 var i: integer;
 begin
@@ -156,7 +163,7 @@ begin
   end;
 end.
 
-4.4. Exemplo 4 – laço for
+// 4.4. Exemplo 4 – laço for
 program testeFor;
 var i: integer;
 begin
@@ -164,30 +171,30 @@ begin
     print(i);
 end.
 
-5. Exemplos de programas INVÁLIDOS
+// 5. Exemplos de programas INVÁLIDOS
 
-5.1. Inválido 1 – falta de ponto e vírgula após o cabeçalho
+// 5.1. Inválido 1 – falta de ponto e vírgula após o cabeçalho
 program p
 var x: integer;
 begin
   x := 10;
 end.
 
-5.2. Inválido 2 – atribuição sem expressão
+// 5.2. Inválido 2 – atribuição sem expressão
 program p;
 var x: integer;
 begin
   x := ;
 end.
 
-5.3. Inválido 3 – if sem then
+// 5.3. Inválido 3 – if sem then
 program p;
 var x: integer;
 begin
   if x > 0 print(x);
 end.
 
-5.4. Inválido 4 – tipo não declarado na gramática
+// 5.4. Inválido 4 – tipo não declarado na gramática
 program p;
 var x: char;
 begin
