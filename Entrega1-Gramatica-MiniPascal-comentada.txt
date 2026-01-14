@@ -1,0 +1,195 @@
+Gramática da Mini‑Linguagem MiniPascal (BNF/EBNF) – Comentada
+
+1. Regra inicial
+
+<program> ::= "program" <identifier> ";" <block> "."
+// Um programa começa com a palavra‑chave program, seguida de um identificador (nome do programa), um ponto e vírgula ;,
+// depois um bloco <block> e termina com um ponto final ..
+
+2. Regras sintáticas (BNF/EBNF)
+
+<program> ::= "program" <identifier> ";" <block> "."
+// Regra inicial da linguagem: estrutura completa de um programa.
+
+<block> ::= [<variable-declaration-part>] <compound-statement>
+// Um bloco é opcionalmente uma parte de declarações de variáveis, seguida de um comando composto begin ... end.
+
+<variable-declaration-part> ::= "var" <variable-declaration> {";" <variable-declaration>} [";"]
+// A seção de variáveis começa com a palavra‑chave var, seguida de uma ou mais declarações de variáveis separadas por ;.
+// O último ; é opcional.
+
+<variable-declaration> ::= <identifier-list> ":" <type>
+// Uma declaração de variáveis é uma lista de identificadores, seguida de : e de um tipo.
+
+<identifier-list> ::= <identifier> {"," <identifier>}
+// Uma lista de identificadores tem pelo menos um identificador e pode ter outros separados por vírgulas ,.
+
+<type> ::= "integer" | "real" | "string" | "boolean"
+// Tipos válidos na Mini‑Linguagem: inteiro, real, string e booleano.
+
+<compound-statement> ::= "begin" <statements> "end"
+// Um comando composto é um bloco begin ... end contendo zero ou mais comandos internos.
+
+<statements> ::= [<statement> {";" <statement>}]
+// Dentro de begin ... end, pode não haver comando nenhum ou haver vários comandos separados por ;.
+
+<statement> ::= <assignment-statement>
+| <io-statement>
+| <if-statement>
+| <while-statement>
+| <for-statement>
+| <compound-statement>
+// Um comando pode ser: atribuição, entrada/saída, if, while, for ou outro bloco begin ... end aninhado.
+
+<assignment-statement> ::= <identifier> ":=" <expression>
+// Comando de atribuição: um identificador recebe o valor de uma expressão usando o operador :=.
+
+<io-statement> ::= "read" "(" <identifier> {"," <identifier>} ")"
+| "print" "(" <expression> {"," <expression>} ")"
+// Comando de entrada: read(x, y, ...) lê valores para variáveis.
+// Comando de saída: print(expr1, expr2, ...) imprime uma ou mais expressões.
+
+<if-statement> ::= "if" <expression> "then" <statement> ["else" <statement>]
+// Comando condicional: if com expressão booleana; executa o then e opcionalmente o else.
+
+<while-statement> ::= "while" <expression> "do" <statement>
+// Laço while: enquanto a expressão for verdadeira, executa o comando após do.
+
+<for-statement> ::= "for" <identifier> ":=" <expression>
+("to" | "downto") <expression>
+"do" <statement>
+// Laço for: a variável de controle recebe um valor inicial, vai até um valor final (to ou downto) e executa o comando em cada passo.
+
+<expression> ::= <simple-expression> {<relational-operator> <simple-expression>}
+// Expressão geral: combina expressões simples com operadores relacionais (comparações).
+
+<relational-operator> ::= "=" | "<>" | "<" | "<=" | ">=" | ">"
+// Operadores relacionais: igual, diferente, menor, menor ou igual, maior ou igual, maior.
+
+<simple-expression> ::= <term> {("+" | "-" | "or") <term>}
+// Expressão simples: termos combinados com soma, subtração ou operador lógico or.
+
+<term> ::= <factor> {("*" | "/" | "and") <factor>}
+// Termo: fatores combinados com multiplicação, divisão ou operador lógico and.
+
+<factor> ::= <identifier>
+| <unsigned-number>
+| <string-literal>
+| <bool-literal>
+| "(" <expression> ")"
+| "not" <factor>
+| "+" <factor>
+| "-" <factor>
+// Fator: variável, número, string, booleano, expressão entre parênteses ou operadores unários not, +, -.
+
+<unsigned-number> ::= <integer-number> | <real-number>
+// Número sem sinal pode ser inteiro ou real.
+
+<integer-number> ::= <digit> {<digit>}
+// Inteiro é uma sequência de um ou mais dígitos.
+
+<real-number> ::= <integer-number> "." [<digit> {<digit>}]
+| "." <digit> {<digit>}
+// Real pode ser 3., 3.14 ou .5, sempre com ponto decimal.
+
+<string-literal> ::= "'" {<string-char>} "'"
+// Literal de string: texto entre apóstrofos '...'.
+
+<bool-literal> ::= "true" | "false"
+// Literais booleanos: verdadeiro ou falso.
+
+<identifier> ::= <letter> {<letter> | <digit> | "_"}
+// Identificador começa com letra e pode continuar com letras, dígitos ou sublinhado _.
+
+<letter> ::= "A" | "B" | ... | "Z" | "a" | "b" | ... | "z"
+// Conjunto de letras maiúsculas e minúsculas.
+
+<digit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+// Conjunto de dígitos decimais.
+
+<string-char> ::= qualquer caractere exceto "'" e quebra de linha
+// Caracteres permitidos dentro da string: qualquer um, menos apóstrofo e quebras de linha.
+
+3. Precedência e associatividade de operadores
+
+// Ordem da menor para a maior precedência:
+// 1) Operadores relacionais (=, <>, <, <=, >=, >)
+// 2) Operador lógico or
+// 3) Operador lógico and
+// 4) Operadores aritméticos binários + e -
+// 5) Operadores aritméticos binários * e /
+// 6) Operadores unários +, - e not
+
+// Todos os operadores binários associam à esquerda.
+// Exemplo: a - b - c é interpretado como (a - b) - c.
+
+4. Exemplos de programas VÁLIDOS
+
+4.1. Exemplo 1 – programa mínimo
+program p;
+var x: integer;
+begin
+  x := 10;
+end.
+
+4.2. Exemplo 2 – if/else e expressão lógica
+program testeIf;
+var x: integer; y: integer;
+begin
+  x := 5;
+  y := 10;
+  if x < y then
+    print(x)
+  else
+    print(y);
+end.
+
+4.3. Exemplo 3 – laço while
+program testeWhile;
+var i: integer;
+begin
+  i := 0;
+  while i < 5 do
+  begin
+    print(i);
+    i := i + 1;
+  end;
+end.
+
+4.4. Exemplo 4 – laço for
+program testeFor;
+var i: integer;
+begin
+  for i := 1 to 3 do
+    print(i);
+end.
+
+5. Exemplos de programas INVÁLIDOS
+
+5.1. Inválido 1 – falta de ponto e vírgula após o cabeçalho
+program p
+var x: integer;
+begin
+  x := 10;
+end.
+
+5.2. Inválido 2 – atribuição sem expressão
+program p;
+var x: integer;
+begin
+  x := ;
+end.
+
+5.3. Inválido 3 – if sem then
+program p;
+var x: integer;
+begin
+  if x > 0 print(x);
+end.
+
+5.4. Inválido 4 – tipo não declarado na gramática
+program p;
+var x: char;
+begin
+  x := 'a';
+end.
