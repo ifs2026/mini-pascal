@@ -30,7 +30,7 @@ begin
     x := 'texto';   // atribuição inválida: string em variável integer
 end.
 
-// ===============================
+
 
 
 
