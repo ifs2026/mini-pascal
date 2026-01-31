@@ -12,14 +12,15 @@ Precedência de Operadores: Multiplicação e divisão possuem prioridade sobre 
 Estruturas: Programas iniciados com program, declarações em bloco var e comandos entre begin...end.
 
 Exemplos de Código
-Válido
+✅ Válido
+Delphi
 program Valido;
 var x: integer;
 begin
   x := 10 + 5 * 2;
 end.
-
-Invalido
+❌ Invalido
+Delphi
 program Invalido;
           { Erro: Faltou a seção VAR }
 begin
