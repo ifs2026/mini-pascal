@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="MiniPascalParserTest" time="0.141" tests="7" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal\target\test-classes;C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal\target\classes;C:\Users\IFS\.m2\repository\org\antlr\antlr4-runtime\4.13.1\antlr4-runtime-4.13.1.jar;C:\Users\IFS\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\IFS\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\IFS\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\IFS\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\IFS\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\IFS\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="America/Fortaleza"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="BR"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin"/>
+    <property name="sun.java.command" value="C:\Users\IFS\AppData\Local\Temp\surefire5510848574507998978\surefirebooter-20260131162700176_3.jar C:\Users\IFS\AppData\Local\Temp\surefire5510848574507998978 2026-01-31T16-26-59_998-jvmRun1 surefire-20260131162700176_1tmp surefire_0-20260131162700176_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="MiniPascalParserTest"/>
+    <property name="surefire.test.class.path" value="C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal\target\test-classes;C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal\target\classes;C:\Users\IFS\.m2\repository\org\antlr\antlr4-runtime\4.13.1\antlr4-runtime-4.13.1.jar;C:\Users\IFS\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\IFS\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\IFS\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\IFS\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\IFS\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\IFS\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\IFS"/>
+    <property name="user.language" value="pt"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-10-21"/>
+    <property name="java.home" value="C:\Program Files\Eclipse Adoptium\jdk-25.0.1.8-hotspot"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\IFS\AppData\Local\Temp\surefire5510848574507998978\surefirebooter-20260131162700176_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="25.0.1+8-LTS"/>
+    <property name="user.name" value="IFS"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-25.0.1+8"/>
+    <property name="localRepository" value="C:\Users\IFS\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="C:\Users\IFS\AppData\Local\Temp\"/>
+    <property name="java.version" value="25.0.1"/>
+    <property name="user.dir" value="C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;c:\Users\IFS\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\IFS\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;C:\Program Files\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Embarcadero\Studio\23.0\bin;C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl;C:\Program Files (x86)\Embarcadero\Studio\23.0\bin64;C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\Win64;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\LLVM\bin;C:\apache-maven-3.9.12\bin;C:\Git\cmd;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\IFS\AppData\Local\Programs\Python\Python314\Scripts\;C:\Users\IFS\AppData\Local\Programs\Python\Python314\;C:\Users\IFS\AppData\Local\Microsoft\WindowsApps;C:\Users\IFS\AppData\Local\Programs\Microsoft VS Code\bin;C:\apache-maven-3.9.12\bin;c:\Users\IFS\.vscode\extensions\vscjava.vscode-java-debug-0.58.5\bundled\scripts\noConfigScripts;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="25.0.1+8-LTS"/>
+    <property name="stdin.encoding" value="Cp1252"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="69.0"/>
+  </properties>
+  <testcase name="programaValidoNaoDaErro" classname="MiniPascalParserTest" time="0.057">
+    <system-out><![CDATA[
+> TESTANDO CODIGO:
+program p;
+begin
+end.
+
+=== ARVORE PARSE (hierarquica) ===
+program (programp;beginend.<EOF>)
+  +-- terminal (program)
+  +-- identifier (p)
+    |-- terminal (p)
+  +-- terminal (;)
+  +-- block (beginend)
+    |-- compoundStatement (beginend)
+      |-- terminal (begin)
+      |-- terminal (end)
+  +-- terminal (.)
+  +-- terminal (<EOF>)
+==================================
+]]></system-out>
+  </testcase>
+  <testcase name="programaComIfElseValido" classname="MiniPascalParserTest" time="0.013">
+    <system-out><![CDATA[
+> TESTANDO CODIGO:
+program p;
+var x: integer;
+begin
+    if x > 0 then x := x - 1 else x := 0;
+end.
+
+=== ARVORE PARSE (hierarquica) ===
+program (programp;varx:integer;beginifx>0thenx:=x-1elsex:=0;end.<EOF>)
+  +-- terminal (program)
+  +-- identifier (p)
+    |-- terminal (p)
+  +-- terminal (;)
+  +-- block (varx:integer;beginifx>0thenx:=x-1elsex:=0;end)
+    |-- variableDeclarationPart (varx:integer;)
+      |-- terminal (var)
+      |-- variableDeclaration (x:integer)
+        |-- identifierList (x)
+          |-- identifier (x)
+            |-- terminal (x)
+        |-- terminal (:)
+        |-- type_ (integer)
+          |-- terminal (integer)
+      |-- terminal (;)
+    |-- compoundStatement (beginifx>0thenx:=x-1elsex:=0;end)
+      |-- terminal (begin)
+      |-- statements (ifx>0thenx:=x-1elsex:=0)
+        |-- statement (ifx>0thenx:=x-1elsex:=0)
+          |-- structuredStatement (ifx>0thenx:=x-1elsex:=0)
+            |-- ifStatement (ifx>0thenx:=x-1elsex:=0)
+              |-- terminal (if)
+              |-- expression (x>0)
+                |-- simpleExpression (x)
+                  |-- term (x)
+                    |-- factor (x)
+                      |-- identifier (x)
+                        |-- terminal (x)
+                |-- relationalOperator (>)
+                  |-- terminal (>)
+                |-- simpleExpression (0)
+                  |-- term (0)
+                    |-- factor (0)
+                      |-- unsignedNumber (0)
+                        |-- terminal (0)
+              |-- terminal (then)
+              |-- statement (x:=x-1)
+                |-- simpleStatement (x:=x-1)
+                  |-- assignmentStatement (x:=x-1)
+                    |-- identifier (x)
+                      |-- terminal (x)
+                    |-- terminal (:=)
+                    |-- expression (x-1)
+                      |-- simpleExpression (x-1)
+                        |-- term (x)
+                          |-- factor (x)
+                            |-- identifier (x)
+                              |-- terminal (x)
+                        |-- additiveOperator (-)
+                          |-- terminal (-)
+                        |-- term (1)
+                          |-- factor (1)
+                            |-- unsignedNumber (1)
+                              |-- terminal (1)
+              |-- terminal (else)
+              |-- statement (x:=0)
+                |-- simpleStatement (x:=0)
+                  |-- assignmentStatement (x:=0)
+                    |-- identifier (x)
+                      |-- terminal (x)
+                    |-- terminal (:=)
+                    |-- expression (0)
+                      |-- simpleExpression (0)
+                        |-- term (0)
+                          |-- factor (0)
+                            |-- unsignedNumber (0)
+                              |-- terminal (0)
+      |-- terminal (;)
+      |-- terminal (end)
+  +-- terminal (.)
+  +-- terminal (<EOF>)
+==================================
+]]></system-out>
+  </testcase>
+  <testcase name="programaComWhileValido" classname="MiniPascalParserTest" time="0.019">
+    <system-out><![CDATA[
+> TESTANDO CODIGO:
+program w;
+var i: integer;
+begin
+    i := 0;
+    while i < 10 do i := i + 1;
+end.
+
+=== ARVORE PARSE (hierarquica) ===
+program (programw;vari:integer;begini:=0;whilei<10doi:=i+1;end.<EOF>)
+  +-- terminal (program)
+  +-- identifier (w)
+    |-- terminal (w)
+  +-- terminal (;)
+  +-- block (vari:integer;begini:=0;whilei<10doi:=i+1;end)
+    |-- variableDeclarationPart (vari:integer;)
+      |-- terminal (var)
+      |-- variableDeclaration (i:integer)
+        |-- identifierList (i)
+          |-- identifier (i)
+            |-- terminal (i)
+        |-- terminal (:)
+        |-- type_ (integer)
+          |-- terminal (integer)
+      |-- terminal (;)
+    |-- compoundStatement (begini:=0;whilei<10doi:=i+1;end)
+      |-- terminal (begin)
+      |-- statements (i:=0;whilei<10doi:=i+1)
+        |-- statement (i:=0)
+          |-- simpleStatement (i:=0)
+            |-- assignmentStatement (i:=0)
+              |-- identifier (i)
+                |-- terminal (i)
+              |-- terminal (:=)
+              |-- expression (0)
+                |-- simpleExpression (0)
+                  |-- term (0)
+                    |-- factor (0)
+                      |-- unsignedNumber (0)
+                        |-- terminal (0)
+        |-- terminal (;)
+        |-- statement (whilei<10doi:=i+1)
+          |-- structuredStatement (whilei<10doi:=i+1)
+            |-- whileStatement (whilei<10doi:=i+1)
+              |-- terminal (while)
+              |-- expression (i<10)
+                |-- simpleExpression (i)
+                  |-- term (i)
+                    |-- factor (i)
+                      |-- identifier (i)
+                        |-- terminal (i)
+                |-- relationalOperator (<)
+                  |-- terminal (<)
+                |-- simpleExpression (10)
+                  |-- term (10)
+                    |-- factor (10)
+                      |-- unsignedNumber (10)
+                        |-- terminal (10)
+              |-- terminal (do)
+              |-- statement (i:=i+1)
+                |-- simpleStatement (i:=i+1)
+                  |-- assignmentStatement (i:=i+1)
+                    |-- identifier (i)
+                      |-- terminal (i)
+                    |-- terminal (:=)
+                    |-- expression (i+1)
+                      |-- simpleExpression (i+1)
+                        |-- term (i)
+                          |-- factor (i)
+                            |-- identifier (i)
+                              |-- terminal (i)
+                        |-- additiveOperator (+)
+                          |-- terminal (+)
+                        |-- term (1)
+                          |-- factor (1)
+                            |-- unsignedNumber (1)
+                              |-- terminal (1)
+      |-- terminal (;)
+      |-- terminal (end)
+  +-- terminal (.)
+  +-- terminal (<EOF>)
+==================================
+]]></system-out>
+  </testcase>
+  <testcase name="programaComForValido" classname="MiniPascalParserTest" time="0.012">
+    <system-out><![CDATA[
+> TESTANDO CODIGO:
+program f;
+var i: integer;
+begin
+    for i := 1 to 5 do print(i);
+end.
+
+=== ARVORE PARSE (hierarquica) ===
+program (programf;vari:integer;beginfori:=1to5doprint(i);end.<EOF>)
+  +-- terminal (program)
+  +-- identifier (f)
+    |-- terminal (f)
+  +-- terminal (;)
+  +-- block (vari:integer;beginfori:=1to5doprint(i);end)
+    |-- variableDeclarationPart (vari:integer;)
+      |-- terminal (var)
+      |-- variableDeclaration (i:integer)
+        |-- identifierList (i)
+          |-- identifier (i)
+            |-- terminal (i)
+        |-- terminal (:)
+        |-- type_ (integer)
+          |-- terminal (integer)
+      |-- terminal (;)
+    |-- compoundStatement (beginfori:=1to5doprint(i);end)
+      |-- terminal (begin)
+      |-- statements (fori:=1to5doprint(i))
+        |-- statement (fori:=1to5doprint(i))
+          |-- structuredStatement (fori:=1to5doprint(i))
+            |-- forStatement (fori:=1to5doprint(i))
+              |-- terminal (for)
+              |-- identifier (i)
+                |-- terminal (i)
+              |-- terminal (:=)
+              |-- expression (1)
+                |-- simpleExpression (1)
+                  |-- term (1)
+                    |-- factor (1)
+                      |-- unsignedNumber (1)
+                        |-- terminal (1)
+              |-- terminal (to)
+              |-- expression (5)
+                |-- simpleExpression (5)
+                  |-- term (5)
+                    |-- factor (5)
+                      |-- unsignedNumber (5)
+                        |-- terminal (5)
+              |-- terminal (do)
+              |-- statement (print(i))
+                |-- simpleStatement (print(i))
+                  |-- ioStatement (print(i))
+                    |-- terminal (print)
+                    |-- terminal (()
+                    |-- expression (i)
+                      |-- simpleExpression (i)
+                        |-- term (i)
+                          |-- factor (i)
+                            |-- identifier (i)
+                              |-- terminal (i)
+                    |-- terminal ())
+      |-- terminal (;)
+      |-- terminal (end)
+  +-- terminal (.)
+  +-- terminal (<EOF>)
+==================================
+]]></system-out>
+  </testcase>
+  <testcase name="testVariavelNaoDeclarada" classname="MiniPascalParserTest" time="0.01">
+    <system-out><![CDATA[
+> TESTANDO CODIGO (SEMANTICO):
+program p;
+begin
+    x := 10;
+end.
+
+MSG ERRO SEMANTICO: Variavel 'x' nao declarada
+----------------------------------
+]]></system-out>
+  </testcase>
+  <testcase name="testRedeclaracaoNoMesmoEscopo" classname="MiniPascalParserTest" time="0.002">
+    <system-out><![CDATA[
+> TESTANDO CODIGO (SEMANTICO):
+program p;
+var x, x: integer;
+begin
+end.
+
+MSG ERRO SEMANTICO: Variavel 'x' ja declarada neste escopo
+----------------------------------
+]]></system-out>
+  </testcase>
+  <testcase name="testEscopoAninhado" classname="MiniPascalParserTest" time="0.002">
+    <system-out><![CDATA[
+> TESTANDO CODIGO (SEMANTICO):
+program p;
+var x: integer;
+begin
+    x := 5;
+    begin
+        var y: integer;
+        y := 10;
+    end;
+    y := 20;
+end.
+
+MSG ERRO SEMANTICO: Variavel 'y' nao declarada
+----------------------------------
+]]></system-out>
+  </testcase>
+</testsuite>

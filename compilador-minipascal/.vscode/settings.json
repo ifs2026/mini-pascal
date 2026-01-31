@@ -1,0 +1,12 @@
+{
+    "java.project.sourcePaths": [
+        "src/main/java",
+        "target/generated-sources/antlr4"
+    ],
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.lint.suppressWarnings": [
+        "ThrowableNotThrown"
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.import.maven.enabled": true
+}
