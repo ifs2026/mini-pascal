@@ -2,11 +2,7 @@
 
 # > \*\*Projeto Acadêmico\*\* desenvolvido para a disciplina de LINGUAGENS FORMAIS E AUTOMATOS (Compiladores) - IFS Campus Itabaiana (2025.2).
 
-# 
-
 # Este projeto implementa um compilador funcional para a linguagem \*\*Mini-Pascal\*\*, cobrindo as fases de Análise Léxica, Sintática, Semântica e Geração de Código Intermediário (C3E).
-
-# 
 
 # \## 🚀 Funcionalidades Suportadas
 
@@ -20,7 +16,6 @@
 
 # \- \*\*Escopo:\*\* Suporte a escopos aninhados e variáveis globais/locais.
 
-# 
 
 # \## 🛠️ Tecnologias Utilizadas
 
@@ -32,7 +27,6 @@
 
 # \- \*\*JUnit 5\*\* (Testes Automatizados)
 
-# 
 
 # \## 📂 Estrutura do Repositório
 
@@ -44,13 +38,11 @@
 
 # \- `pom.xml`: Configurações do Maven e dependências do ANTLR.
 
-# 
 
 # \## ⚙️ Como Executar
 
 # O projeto possui um menu interativo no arquivo `Main.java` que facilita a execução de cada etapa:
 
-# 
 
 # 1\. Clone o repositório.
 
@@ -68,7 +60,6 @@
 
 #    - \*\*Opção 8:\*\* Demonstração da geração de código (C3E).
 
-# 
 
 # \## 🎓 Autores
 
