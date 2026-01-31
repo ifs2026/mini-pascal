@@ -1,4 +1,5 @@
 Entrega 1: Definição da Gramática (BNF)
+
 Artefato Principal
 Arquivo de Gramática: Gramatica EBNF.txt (contendo a sintaxe formal em EBNF).
 

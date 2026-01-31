@@ -1,4 +1,5 @@
 Entrega 5: Ajustes Finais e Apresentação
+
 Descrição
 Compilador completo e polido, integrando todas as fases do desenvolvimento (Léxico, Sintático, Semântico e Gerador de Código).
 

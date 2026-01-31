@@ -1,4 +1,5 @@
 Entrega 3: Analisador Sintático e Semântico (Parser)
+
 Descrição
 Validação da estrutura do código conforme a gramática (Sintático) e verificação de regras de lógica e tipos (Semântico).
 

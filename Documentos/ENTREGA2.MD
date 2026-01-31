@@ -1,4 +1,5 @@
 Entrega 2: Analisador Léxico (Scanner)
+
 Descrição
 Implementação do módulo capaz de ler o arquivo fonte (caracteres) e transformá-lo em uma sequência de Tokens, ignorando espaços em branco e comentários.
 

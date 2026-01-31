@@ -1,4 +1,5 @@
 Entrega 4: Gerador de Código Intermediário
+
 Descrição
 Tradução da árvore sintática para uma representação linear e simplificada utilizando Código de Três Endereços (C3E).
 
