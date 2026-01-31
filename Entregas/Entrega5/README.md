@@ -2,7 +2,6 @@
 
 # > \*\*Projeto Acadêmico\*\* desenvolvido para a disciplina de LINGUAGENS FORMAIS E AUTOMATOS (Compiladores) - IFS Campus Itabaiana (2025.2).
 
-# 
 
 # Este projeto implementa um compilador funcional para a linguagem \*\*Mini-Pascal\*\*, cobrindo as fases de Análise Léxica, Sintática, Semântica e Geração de Código Intermediário (C3E).
 
