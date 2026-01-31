@@ -1,11 +1,11 @@
-C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal\src\main\java\Instruction.java
-C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal\src\main\java\Main.java
-C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal\src\main\java\MiniPascalCodeGenerator.java
-C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal\src\main\java\MiniPascalSemanticVisitor.java
-C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal\src\main\java\SemanticException.java
-C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal\src\main\java\SymbolTable.java
-C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal\src\main\java\Type.java
-C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal\target\generated-sources\antlr4\miniPascalBaseVisitor.java
-C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal\target\generated-sources\antlr4\miniPascalLexer.java
-C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal\target\generated-sources\antlr4\miniPascalParser.java
-C:\IFS\2025.2-LINGUAGENS FORMAIS E AUTOMATOS\Projeto\gen\compilador-minipascal\target\generated-sources\antlr4\miniPascalVisitor.java
+C:\Git\compilador\mini-pascal\compilador-minipascal\src\main\java\Instruction.java
+C:\Git\compilador\mini-pascal\compilador-minipascal\src\main\java\Main.java
+C:\Git\compilador\mini-pascal\compilador-minipascal\src\main\java\MiniPascalCodeGenerator.java
+C:\Git\compilador\mini-pascal\compilador-minipascal\src\main\java\MiniPascalSemanticVisitor.java
+C:\Git\compilador\mini-pascal\compilador-minipascal\src\main\java\SemanticException.java
+C:\Git\compilador\mini-pascal\compilador-minipascal\src\main\java\SymbolTable.java
+C:\Git\compilador\mini-pascal\compilador-minipascal\src\main\java\Type.java
+C:\Git\compilador\mini-pascal\compilador-minipascal\target\generated-sources\antlr4\miniPascalBaseVisitor.java
+C:\Git\compilador\mini-pascal\compilador-minipascal\target\generated-sources\antlr4\miniPascalLexer.java
+C:\Git\compilador\mini-pascal\compilador-minipascal\target\generated-sources\antlr4\miniPascalParser.java
+C:\Git\compilador\mini-pascal\compilador-minipascal\target\generated-sources\antlr4\miniPascalVisitor.java
