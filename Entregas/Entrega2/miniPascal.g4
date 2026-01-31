@@ -62,8 +62,8 @@ assignmentStatement                         // Comando de atribuição.
     ;
 
 ioStatement                                 // Comandos de E/S definidos na linguagem.
-    : READ LPAREN identifier (COMMA identifier)* RPAREN        // "read(x, y, ...)" lê variáveis.
-    | PRINT LPAREN expression (COMMA expression)* RPAREN       // "print(expr1, expr2, ...)" escreve expressões.
+    : READ LPAREN identifier (COMMA identifier)* RPAREN              // "read(x, y, ...)" lê variáveis.
+    | (PRINT | WRITE) LPAREN expression (COMMA expression)* RPAREN   // "print(expr1, expr2, ...)" escreve expressões.
     ;
 
 structuredStatement                         // Comandos com estrutura de controle.
@@ -156,6 +156,7 @@ STRING  : 'STRING';                         // Token da palavra-chave STRING.
 BOOLEAN : 'BOOLEAN';                        // Token da palavra-chave BOOLEAN.
 READ    : 'READ';                           // Token da palavra-chave READ.
 PRINT   : 'PRINT';                          // Token da palavra-chave PRINT.
+WRITE   : 'WRITE';                          // Token da palavra-chave WRITE.
 BEGIN   : 'BEGIN';                          // Token da palavra-chave BEGIN.
 END     : 'END';                            // Token da palavra-chave END.
 IF      : 'IF';                             // Token da palavra-chave IF.
@@ -213,16 +214,22 @@ STRING_LITERAL                             // Token de strings literais.
     : '\'' ('\'\'' | ~'\'')* '\''          // Texto entre apóstrofos; '' representa apóstrofo dentro da string.
     ;
 
-// Ignorar espaços em branco e comentários   // Seção de tokens descartados.
-
-WS                                         // Espaços em branco.
-    : [ \t\r\n]+ -> skip                   // Espaço, tab e quebras de linha são ignorados.
-    ;
+// Mostra comentários ou não.
 
 COMMENT_1                                  // Comentário no estilo "(* ... *)".
-    : '(*' .*? '*)' -> skip                // Qualquer conteúdo entre "(*" e "*)" é descartado (quantificador não guloso).
+    : '(*' .*? '*)' -> channel(HIDDEN)     // Qualquer conteúdo entre "(*" e "*)" é mostrado e para ser descartado use "SKIP".
     ;
 
 COMMENT_2                                  // Comentário no estilo "{ ... }".
-    : '{' .*? '}' -> skip                  // Qualquer conteúdo entre "{" e "}" é descartado (quantificador não guloso).
+    : '{' .*? '}' -> channel(HIDDEN)       // Qualquer conteúdo entre "{" e "}" é mostrado e para ser descartado use "SKIP".
+    ;
+
+COMMENT_3                                  // Comentário no estilo "//".
+    : '//' ~[\r\n]* -> channel(HIDDEN)     // Qualquer conteúdo depois de "//" é mostrado e para ser descartado use "SKIP".
+    ;
+
+// Ignorar espaços em branco  // Seção de tokens descartados.
+
+WS                                         // Espaços em branco.
+    : [ \t\r\n]+ -> skip                   // Espaço, tab e quebras de linha são ignorados.
     ;
