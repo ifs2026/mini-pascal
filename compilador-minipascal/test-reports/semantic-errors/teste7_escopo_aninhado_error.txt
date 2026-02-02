@@ -1,0 +1,20 @@
+=== ERRO SEMÂNTICO DETECTADO ===
+Data/Hora: 2026-02-01T18:19:52.700482100
+Teste: teste7_escopo_aninhado
+================================
+
+CÓDIGO FONTE:
+program p;
+var x: integer;
+begin
+    x := 5;
+    begin
+        var y: integer;
+        y := 10;
+    end;
+    y := 20;
+end.
+
+
+ERRO DETECTADO:
+Variavel 'y' nao declarada

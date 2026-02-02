@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="MiniPascalParserTest" time="0.118" tests="7" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="MiniPascalParserTest" time="0.137" tests="7" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="BR"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\IFS\AppData\Local\Temp\surefire17070265206115345559\surefirebooter-20260131183834441_3.jar C:\Users\IFS\AppData\Local\Temp\surefire17070265206115345559 2026-01-31T18-38-34_294-jvmRun1 surefire-20260131183834441_1tmp surefire_0-20260131183834441_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\IFS\AppData\Local\Temp\surefire14636952136254153823\surefirebooter-20260201181952182_3.jar C:\Users\IFS\AppData\Local\Temp\surefire14636952136254153823 2026-02-01T18-19-52_024-jvmRun1 surefire-20260201181952182_1tmp surefire_0-20260201181952182_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="MiniPascalParserTest"/>
     <property name="surefire.test.class.path" value="C:\Git\compilador\mini-pascal\compilador-minipascal\target\test-classes;C:\Git\compilador\mini-pascal\compilador-minipascal\target\classes;C:\Users\IFS\.m2\repository\org\antlr\antlr4-runtime\4.13.1\antlr4-runtime-4.13.1.jar;C:\Users\IFS\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\IFS\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\IFS\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\IFS\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\IFS\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\IFS\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\IFS\AppData\Local\Temp\surefire17070265206115345559\surefirebooter-20260131183834441_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\IFS\AppData\Local\Temp\surefire14636952136254153823\surefirebooter-20260201181952182_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="25.0.1+8-LTS"/>
@@ -61,7 +61,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="programaValidoNaoDaErro" classname="MiniPascalParserTest" time="0.05">
+  <testcase name="programaValidoNaoDaErro" classname="MiniPascalParserTest" time="0.06">
     <system-out><![CDATA[
 > TESTANDO CODIGO:
 program p;
@@ -81,6 +81,7 @@ program (programp;beginend.<EOF>)
   +-- terminal (.)
   +-- terminal (<EOF>)
 ==================================
+✅ Árvore salva em: test-reports/parse-trees/teste1_programa_valido_tree.txt
 ]]></system-out>
   </testcase>
   <testcase name="programaComIfElseValido" classname="MiniPascalParserTest" time="0.017">
@@ -166,9 +167,10 @@ program (programp;varx:integer;beginifx>0thenx:=x-1elsex:=0;end.<EOF>)
   +-- terminal (.)
   +-- terminal (<EOF>)
 ==================================
+✅ Árvore salva em: test-reports/parse-trees/teste2_if_else_tree.txt
 ]]></system-out>
   </testcase>
-  <testcase name="programaComWhileValido" classname="MiniPascalParserTest" time="0.006">
+  <testcase name="programaComWhileValido" classname="MiniPascalParserTest" time="0.01">
     <system-out><![CDATA[
 > TESTANDO CODIGO:
 program w;
@@ -252,9 +254,10 @@ program (programw;vari:integer;begini:=0;whilei<10doi:=i+1;end.<EOF>)
   +-- terminal (.)
   +-- terminal (<EOF>)
 ==================================
+✅ Árvore salva em: test-reports/parse-trees/teste3_while_valido_tree.txt
 ]]></system-out>
   </testcase>
-  <testcase name="programaComForValido" classname="MiniPascalParserTest" time="0.005">
+  <testcase name="programaComForValido" classname="MiniPascalParserTest" time="0.011">
     <system-out><![CDATA[
 > TESTANDO CODIGO:
 program f;
@@ -321,9 +324,10 @@ program (programf;vari:integer;beginfori:=1to5doprint(i);end.<EOF>)
   +-- terminal (.)
   +-- terminal (<EOF>)
 ==================================
+✅ Árvore salva em: test-reports/parse-trees/teste4_for_valido_tree.txt
 ]]></system-out>
   </testcase>
-  <testcase name="testVariavelNaoDeclarada" classname="MiniPascalParserTest" time="0.008">
+  <testcase name="testVariavelNaoDeclarada" classname="MiniPascalParserTest" time="0.01">
     <system-out><![CDATA[
 > TESTANDO CODIGO (SEMANTICO):
 program p;
@@ -333,9 +337,10 @@ end.
 
 MSG ERRO SEMANTICO: Variavel 'x' nao declarada
 ----------------------------------
+✅ Erro semântico salvo em: test-reports/semantic-errors/teste5_variavel_nao_declarada_error.txt
 ]]></system-out>
   </testcase>
-  <testcase name="testRedeclaracaoNoMesmoEscopo" classname="MiniPascalParserTest" time="0.002">
+  <testcase name="testRedeclaracaoNoMesmoEscopo" classname="MiniPascalParserTest" time="0.003">
     <system-out><![CDATA[
 > TESTANDO CODIGO (SEMANTICO):
 program p;
@@ -345,9 +350,10 @@ end.
 
 MSG ERRO SEMANTICO: Variavel 'x' ja declarada neste escopo
 ----------------------------------
+✅ Erro semântico salvo em: test-reports/semantic-errors/teste6_redeclaracao_mesmo_escopo_error.txt
 ]]></system-out>
   </testcase>
-  <testcase name="testEscopoAninhado" classname="MiniPascalParserTest" time="0.004">
+  <testcase name="testEscopoAninhado" classname="MiniPascalParserTest" time="0.003">
     <system-out><![CDATA[
 > TESTANDO CODIGO (SEMANTICO):
 program p;
@@ -363,6 +369,7 @@ end.
 
 MSG ERRO SEMANTICO: Variavel 'y' nao declarada
 ----------------------------------
+✅ Erro semântico salvo em: test-reports/semantic-errors/teste7_escopo_aninhado_error.txt
 ]]></system-out>
   </testcase>
 </testsuite>

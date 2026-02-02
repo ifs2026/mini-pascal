@@ -1,0 +1,46 @@
+=== TOKENS DO LEXER ===
+Data/Hora: 2026-02-01T18:19:48.435023300
+=======================
+
+CÓDIGO FONTE:
+program aninhado;
+var i, j: integer;
+begin
+    for i := 1 to 5 do
+        while j < 10 do
+            j := j + 1;
+end.
+
+
+TOKENS GERADOS:
+linha 1, coluna 0, tipo 1, texto "program"
+linha 1, coluna 8, tipo 42, texto "aninhado"
+linha 1, coluna 16, tipo 31, texto ";"
+linha 2, coluna 0, tipo 2, texto "var"
+linha 2, coluna 4, tipo 42, texto "i"
+linha 2, coluna 5, tipo 30, texto ","
+linha 2, coluna 7, tipo 42, texto "j"
+linha 2, coluna 8, tipo 32, texto ":"
+linha 2, coluna 10, tipo 3, texto "integer"
+linha 2, coluna 17, tipo 31, texto ";"
+linha 3, coluna 0, tipo 10, texto "begin"
+linha 4, coluna 4, tipo 17, texto "for"
+linha 4, coluna 8, tipo 42, texto "i"
+linha 4, coluna 10, tipo 29, texto ":="
+linha 4, coluna 13, tipo 43, texto "1"
+linha 4, coluna 15, tipo 18, texto "to"
+linha 4, coluna 18, tipo 43, texto "5"
+linha 4, coluna 20, tipo 16, texto "do"
+linha 5, coluna 8, tipo 15, texto "while"
+linha 5, coluna 14, tipo 42, texto "j"
+linha 5, coluna 16, tipo 35, texto "<"
+linha 5, coluna 18, tipo 43, texto "10"
+linha 5, coluna 21, tipo 16, texto "do"
+linha 6, coluna 12, tipo 42, texto "j"
+linha 6, coluna 14, tipo 29, texto ":="
+linha 6, coluna 17, tipo 42, texto "j"
+linha 6, coluna 19, tipo 25, texto "+"
+linha 6, coluna 21, tipo 43, texto "1"
+linha 6, coluna 22, tipo 31, texto ";"
+linha 7, coluna 0, tipo 11, texto "end"
+linha 7, coluna 3, tipo 41, texto "."

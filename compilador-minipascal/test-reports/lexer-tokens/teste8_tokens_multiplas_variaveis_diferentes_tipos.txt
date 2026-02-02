@@ -1,0 +1,58 @@
+=== TOKENS DO LEXER ===
+Data/Hora: 2026-02-01T18:19:48.430994400
+=======================
+
+CÓDIGO FONTE:
+program vars;
+var idade: integer;
+    altura: real;
+    ativo: boolean;
+    nome: string;
+begin
+    idade := 25;
+    altura := 1.75;
+    ativo := true;
+    nome := 'Jose';
+end.
+
+
+TOKENS GERADOS:
+linha 1, coluna 0, tipo 1, texto "program"
+linha 1, coluna 8, tipo 42, texto "vars"
+linha 1, coluna 12, tipo 31, texto ";"
+linha 2, coluna 0, tipo 2, texto "var"
+linha 2, coluna 4, tipo 42, texto "idade"
+linha 2, coluna 9, tipo 32, texto ":"
+linha 2, coluna 11, tipo 3, texto "integer"
+linha 2, coluna 18, tipo 31, texto ";"
+linha 3, coluna 4, tipo 42, texto "altura"
+linha 3, coluna 10, tipo 32, texto ":"
+linha 3, coluna 12, tipo 4, texto "real"
+linha 3, coluna 16, tipo 31, texto ";"
+linha 4, coluna 4, tipo 42, texto "ativo"
+linha 4, coluna 9, tipo 32, texto ":"
+linha 4, coluna 11, tipo 6, texto "boolean"
+linha 4, coluna 18, tipo 31, texto ";"
+linha 5, coluna 4, tipo 42, texto "nome"
+linha 5, coluna 8, tipo 32, texto ":"
+linha 5, coluna 10, tipo 5, texto "string"
+linha 5, coluna 16, tipo 31, texto ";"
+linha 6, coluna 0, tipo 10, texto "begin"
+linha 7, coluna 4, tipo 42, texto "idade"
+linha 7, coluna 10, tipo 29, texto ":="
+linha 7, coluna 13, tipo 43, texto "25"
+linha 7, coluna 15, tipo 31, texto ";"
+linha 8, coluna 4, tipo 42, texto "altura"
+linha 8, coluna 11, tipo 29, texto ":="
+linha 8, coluna 14, tipo 44, texto "1.75"
+linha 8, coluna 18, tipo 31, texto ";"
+linha 9, coluna 4, tipo 42, texto "ativo"
+linha 9, coluna 10, tipo 29, texto ":="
+linha 9, coluna 13, tipo 20, texto "true"
+linha 9, coluna 17, tipo 31, texto ";"
+linha 10, coluna 4, tipo 42, texto "nome"
+linha 10, coluna 9, tipo 29, texto ":="
+linha 10, coluna 12, tipo 45, texto "'Jose'"
+linha 10, coluna 18, tipo 31, texto ";"
+linha 11, coluna 0, tipo 11, texto "end"
+linha 11, coluna 3, tipo 41, texto "."

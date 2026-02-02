@@ -1,0 +1,28 @@
+=== TOKENS DO LEXER ===
+Data/Hora: 2026-02-01T18:19:48.440420700
+=======================
+
+CÓDIGO FONTE:
+program string;
+var mensagem: string;
+begin
+    mensagem := 'O preco eh R$ 10,00 e o nome eh ''Joao''.';
+end.
+
+
+TOKENS GERADOS:
+linha 1, coluna 0, tipo 1, texto "program"
+linha 1, coluna 8, tipo 5, texto "string"
+linha 1, coluna 14, tipo 31, texto ";"
+linha 2, coluna 0, tipo 2, texto "var"
+linha 2, coluna 4, tipo 42, texto "mensagem"
+linha 2, coluna 12, tipo 32, texto ":"
+linha 2, coluna 14, tipo 5, texto "string"
+linha 2, coluna 20, tipo 31, texto ";"
+linha 3, coluna 0, tipo 10, texto "begin"
+linha 4, coluna 4, tipo 42, texto "mensagem"
+linha 4, coluna 13, tipo 29, texto ":="
+linha 4, coluna 16, tipo 45, texto "'O preco eh R$ 10,00 e o nome eh ''Joao''.'"
+linha 4, coluna 59, tipo 31, texto ";"
+linha 5, coluna 0, tipo 11, texto "end"
+linha 5, coluna 3, tipo 41, texto "."

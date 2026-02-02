@@ -86,6 +86,7 @@ forStatement                                // Comando de repetição for.
     ;
 
 // ============ EXPRESSÕES COM PRECEDÊNCIA ============
+// Precedência (do menor para o maior): OR < AND < NOT < Relacional < Aditivo < Multiplicativo
 
 expression                                  // Expressão relacional possivelmente encadeada.
     : simpleExpression (relationalOperator simpleExpression)* // Uma expressão simples seguida de comparações.
@@ -180,7 +181,6 @@ STAR    : '*';                              // Operador de multiplicação.
 SLASH   : '/';                              // Operador de divisão.
 ASSIGN  : ':=';                             // Operador de atribuição.
 
-
 // Símbolos de delimitação                  // Seção de tokens de pontuação/delimitadores.
 COMMA   : ',';                              // Vírgula.
 SEMI    : ';';                              // Ponto e vírgula.
@@ -214,7 +214,7 @@ STRING_LITERAL                             // Token de strings literais.
     : '\'' ('\'\'' | ~'\'')* '\''          // Texto entre apóstrofos; '' representa apóstrofo dentro da string.
     ;
 
-// Mostra comentários ou não.
+// Comentários (HIDDEN para visualização em debug, use SKIP para descartar completamente)
 
 COMMENT_1                                  // Comentário no estilo "(* ... *)".
     : '(*' .*? '*)' -> channel(HIDDEN)     // Qualquer conteúdo entre "(*" e "*)" é mostrado e para ser descartado use "SKIP".
@@ -233,3 +233,25 @@ COMMENT_3                                  // Comentário no estilo "//".
 WS                                         // Espaços em branco.
     : [ \t\r\n]+ -> skip                   // Espaço, tab e quebras de linha são ignorados.
     ;
+
+/*
+ * EXEMPLOS DE CÓDIGO VÁLIDO:
+ * 
+ * program teste;
+ * var x, y: integer; resultado: real;
+ * begin
+ *   x := 10;
+ *   y := 5;
+ *   resultado := x + y * 2.0;
+ *   if resultado > 15 then
+ *     print('Maior que 15')
+ *   else
+ *     print('Menor ou igual a 15');
+ * end.
+ * 
+ * EXEMPLOS DE CÓDIGO INVÁLIDO (não suportado):
+ * - Arrays: var arr: array[1..10] of integer;
+ * - Funções: function soma(a, b: integer): integer;
+ * - Ponteiros: var p: ^integer;
+ * - Structs/Records: type pessoa = record nome: string; end;
+ */

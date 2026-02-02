@@ -1,0 +1,32 @@
+=== TOKENS DO LEXER ===
+Data/Hora: 2026-02-01T18:19:48.426643400
+=======================
+
+CÓDIGO FONTE:
+program coment;
+{ Este eh um comentario de bloco }
+var x: integer; (* outro comentario *)
+begin
+    x := 42; // comentario de linha
+end.
+
+
+TOKENS GERADOS:
+linha 1, coluna 0, tipo 1, texto "program"
+linha 1, coluna 8, tipo 42, texto "coment"
+linha 1, coluna 14, tipo 31, texto ";"
+linha 2, coluna 0, tipo 47, texto "{ Este eh um comentario de bloco }"
+linha 3, coluna 0, tipo 2, texto "var"
+linha 3, coluna 4, tipo 42, texto "x"
+linha 3, coluna 5, tipo 32, texto ":"
+linha 3, coluna 7, tipo 3, texto "integer"
+linha 3, coluna 14, tipo 31, texto ";"
+linha 3, coluna 16, tipo 46, texto "(* outro comentario *)"
+linha 4, coluna 0, tipo 10, texto "begin"
+linha 5, coluna 4, tipo 42, texto "x"
+linha 5, coluna 6, tipo 29, texto ":="
+linha 5, coluna 9, tipo 43, texto "42"
+linha 5, coluna 11, tipo 31, texto ";"
+linha 5, coluna 13, tipo 48, texto "// comentario de linha"
+linha 6, coluna 0, tipo 11, texto "end"
+linha 6, coluna 3, tipo 41, texto "."

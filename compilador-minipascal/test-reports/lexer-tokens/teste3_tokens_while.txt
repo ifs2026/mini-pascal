@@ -1,0 +1,35 @@
+=== TOKENS DO LEXER ===
+Data/Hora: 2026-02-01T18:19:48.396373100
+=======================
+
+CÓDIGO FONTE:
+program w; var i: integer; begin i := 0; while i < 10 do i := i + 1; end.
+
+
+TOKENS GERADOS:
+linha 1, coluna 0, tipo 1, texto "program"
+linha 1, coluna 8, tipo 42, texto "w"
+linha 1, coluna 9, tipo 31, texto ";"
+linha 1, coluna 11, tipo 2, texto "var"
+linha 1, coluna 15, tipo 42, texto "i"
+linha 1, coluna 16, tipo 32, texto ":"
+linha 1, coluna 18, tipo 3, texto "integer"
+linha 1, coluna 25, tipo 31, texto ";"
+linha 1, coluna 27, tipo 10, texto "begin"
+linha 1, coluna 33, tipo 42, texto "i"
+linha 1, coluna 35, tipo 29, texto ":="
+linha 1, coluna 38, tipo 43, texto "0"
+linha 1, coluna 39, tipo 31, texto ";"
+linha 1, coluna 41, tipo 15, texto "while"
+linha 1, coluna 47, tipo 42, texto "i"
+linha 1, coluna 49, tipo 35, texto "<"
+linha 1, coluna 51, tipo 43, texto "10"
+linha 1, coluna 54, tipo 16, texto "do"
+linha 1, coluna 57, tipo 42, texto "i"
+linha 1, coluna 59, tipo 29, texto ":="
+linha 1, coluna 62, tipo 42, texto "i"
+linha 1, coluna 64, tipo 25, texto "+"
+linha 1, coluna 66, tipo 43, texto "1"
+linha 1, coluna 67, tipo 31, texto ";"
+linha 1, coluna 69, tipo 11, texto "end"
+linha 1, coluna 72, tipo 41, texto "."

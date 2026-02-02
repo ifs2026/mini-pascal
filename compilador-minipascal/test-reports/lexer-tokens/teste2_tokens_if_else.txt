@@ -1,0 +1,35 @@
+=== TOKENS DO LEXER ===
+Data/Hora: 2026-02-01T18:19:48.388190400
+=======================
+
+CÓDIGO FONTE:
+program p; var x: integer; begin if x > 0 then x := x - 1 else x := 0; end.
+
+
+TOKENS GERADOS:
+linha 1, coluna 0, tipo 1, texto "program"
+linha 1, coluna 8, tipo 42, texto "p"
+linha 1, coluna 9, tipo 31, texto ";"
+linha 1, coluna 11, tipo 2, texto "var"
+linha 1, coluna 15, tipo 42, texto "x"
+linha 1, coluna 16, tipo 32, texto ":"
+linha 1, coluna 18, tipo 3, texto "integer"
+linha 1, coluna 25, tipo 31, texto ";"
+linha 1, coluna 27, tipo 10, texto "begin"
+linha 1, coluna 33, tipo 12, texto "if"
+linha 1, coluna 36, tipo 42, texto "x"
+linha 1, coluna 38, tipo 38, texto ">"
+linha 1, coluna 40, tipo 43, texto "0"
+linha 1, coluna 42, tipo 13, texto "then"
+linha 1, coluna 47, tipo 42, texto "x"
+linha 1, coluna 49, tipo 29, texto ":="
+linha 1, coluna 52, tipo 42, texto "x"
+linha 1, coluna 54, tipo 26, texto "-"
+linha 1, coluna 56, tipo 43, texto "1"
+linha 1, coluna 58, tipo 14, texto "else"
+linha 1, coluna 63, tipo 42, texto "x"
+linha 1, coluna 65, tipo 29, texto ":="
+linha 1, coluna 68, tipo 43, texto "0"
+linha 1, coluna 69, tipo 31, texto ";"
+linha 1, coluna 71, tipo 11, texto "end"
+linha 1, coluna 74, tipo 41, texto "."

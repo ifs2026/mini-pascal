@@ -1,0 +1,33 @@
+=== TOKENS DO LEXER ===
+Data/Hora: 2026-02-01T18:19:48.403765400
+=======================
+
+CÓDIGO FONTE:
+program s; var msg: string; var b: boolean; begin msg := 'ok'; b := true; end.
+
+
+TOKENS GERADOS:
+linha 1, coluna 0, tipo 1, texto "program"
+linha 1, coluna 8, tipo 42, texto "s"
+linha 1, coluna 9, tipo 31, texto ";"
+linha 1, coluna 11, tipo 2, texto "var"
+linha 1, coluna 15, tipo 42, texto "msg"
+linha 1, coluna 18, tipo 32, texto ":"
+linha 1, coluna 20, tipo 5, texto "string"
+linha 1, coluna 26, tipo 31, texto ";"
+linha 1, coluna 28, tipo 2, texto "var"
+linha 1, coluna 32, tipo 42, texto "b"
+linha 1, coluna 33, tipo 32, texto ":"
+linha 1, coluna 35, tipo 6, texto "boolean"
+linha 1, coluna 42, tipo 31, texto ";"
+linha 1, coluna 44, tipo 10, texto "begin"
+linha 1, coluna 50, tipo 42, texto "msg"
+linha 1, coluna 54, tipo 29, texto ":="
+linha 1, coluna 57, tipo 45, texto "'ok'"
+linha 1, coluna 61, tipo 31, texto ";"
+linha 1, coluna 63, tipo 42, texto "b"
+linha 1, coluna 65, tipo 29, texto ":="
+linha 1, coluna 68, tipo 20, texto "true"
+linha 1, coluna 72, tipo 31, texto ";"
+linha 1, coluna 74, tipo 11, texto "end"
+linha 1, coluna 77, tipo 41, texto "."

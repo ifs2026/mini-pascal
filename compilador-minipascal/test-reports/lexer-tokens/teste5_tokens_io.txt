@@ -1,0 +1,37 @@
+=== TOKENS DO LEXER ===
+Data/Hora: 2026-02-01T18:19:48.411876700
+=======================
+
+CÓDIGO FONTE:
+program io;
+var valor: integer;
+begin
+    read(valor);
+    print('O valor digitado foi: ', valor);
+end.
+
+
+TOKENS GERADOS:
+linha 1, coluna 0, tipo 1, texto "program"
+linha 1, coluna 8, tipo 42, texto "io"
+linha 1, coluna 10, tipo 31, texto ";"
+linha 2, coluna 0, tipo 2, texto "var"
+linha 2, coluna 4, tipo 42, texto "valor"
+linha 2, coluna 9, tipo 32, texto ":"
+linha 2, coluna 11, tipo 3, texto "integer"
+linha 2, coluna 18, tipo 31, texto ";"
+linha 3, coluna 0, tipo 10, texto "begin"
+linha 4, coluna 4, tipo 7, texto "read"
+linha 4, coluna 8, tipo 39, texto "("
+linha 4, coluna 9, tipo 42, texto "valor"
+linha 4, coluna 14, tipo 40, texto ")"
+linha 4, coluna 15, tipo 31, texto ";"
+linha 5, coluna 4, tipo 8, texto "print"
+linha 5, coluna 9, tipo 39, texto "("
+linha 5, coluna 10, tipo 45, texto "'O valor digitado foi: '"
+linha 5, coluna 34, tipo 30, texto ","
+linha 5, coluna 36, tipo 42, texto "valor"
+linha 5, coluna 41, tipo 40, texto ")"
+linha 5, coluna 42, tipo 31, texto ";"
+linha 6, coluna 0, tipo 11, texto "end"
+linha 6, coluna 3, tipo 41, texto "."

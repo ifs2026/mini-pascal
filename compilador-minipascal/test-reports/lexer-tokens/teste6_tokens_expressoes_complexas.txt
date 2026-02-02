@@ -1,0 +1,65 @@
+=== TOKENS DO LEXER ===
+Data/Hora: 2026-02-01T18:19:48.418877
+=======================
+
+CÓDIGO FONTE:
+program expr;
+var a, b, resultado: integer;
+begin
+    a := 5 + 3 * 2 - 4;
+    b := 10;
+    resultado := (a > b) and (b <> 0) or not (a = 10);
+end.
+
+
+TOKENS GERADOS:
+linha 1, coluna 0, tipo 1, texto "program"
+linha 1, coluna 8, tipo 42, texto "expr"
+linha 1, coluna 12, tipo 31, texto ";"
+linha 2, coluna 0, tipo 2, texto "var"
+linha 2, coluna 4, tipo 42, texto "a"
+linha 2, coluna 5, tipo 30, texto ","
+linha 2, coluna 7, tipo 42, texto "b"
+linha 2, coluna 8, tipo 30, texto ","
+linha 2, coluna 10, tipo 42, texto "resultado"
+linha 2, coluna 19, tipo 32, texto ":"
+linha 2, coluna 21, tipo 3, texto "integer"
+linha 2, coluna 28, tipo 31, texto ";"
+linha 3, coluna 0, tipo 10, texto "begin"
+linha 4, coluna 4, tipo 42, texto "a"
+linha 4, coluna 6, tipo 29, texto ":="
+linha 4, coluna 9, tipo 43, texto "5"
+linha 4, coluna 11, tipo 25, texto "+"
+linha 4, coluna 13, tipo 43, texto "3"
+linha 4, coluna 15, tipo 27, texto "*"
+linha 4, coluna 17, tipo 43, texto "2"
+linha 4, coluna 19, tipo 26, texto "-"
+linha 4, coluna 21, tipo 43, texto "4"
+linha 4, coluna 22, tipo 31, texto ";"
+linha 5, coluna 4, tipo 42, texto "b"
+linha 5, coluna 6, tipo 29, texto ":="
+linha 5, coluna 9, tipo 43, texto "10"
+linha 5, coluna 11, tipo 31, texto ";"
+linha 6, coluna 4, tipo 42, texto "resultado"
+linha 6, coluna 14, tipo 29, texto ":="
+linha 6, coluna 17, tipo 39, texto "("
+linha 6, coluna 18, tipo 42, texto "a"
+linha 6, coluna 20, tipo 38, texto ">"
+linha 6, coluna 22, tipo 42, texto "b"
+linha 6, coluna 23, tipo 40, texto ")"
+linha 6, coluna 25, tipo 23, texto "and"
+linha 6, coluna 29, tipo 39, texto "("
+linha 6, coluna 30, tipo 42, texto "b"
+linha 6, coluna 32, tipo 34, texto "<>"
+linha 6, coluna 35, tipo 43, texto "0"
+linha 6, coluna 36, tipo 40, texto ")"
+linha 6, coluna 38, tipo 24, texto "or"
+linha 6, coluna 41, tipo 22, texto "not"
+linha 6, coluna 45, tipo 39, texto "("
+linha 6, coluna 46, tipo 42, texto "a"
+linha 6, coluna 48, tipo 33, texto "="
+linha 6, coluna 50, tipo 43, texto "10"
+linha 6, coluna 52, tipo 40, texto ")"
+linha 6, coluna 53, tipo 31, texto ";"
+linha 7, coluna 0, tipo 11, texto "end"
+linha 7, coluna 3, tipo 41, texto "."
