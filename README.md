@@ -190,13 +190,13 @@ Ao executar Main.java, você verá o seguinte menu:
 
 ## 📅 Cronograma de Entregas
 
-| # | Entrega | Data Limite | Descrição | Artefatos Principais |
-|---|---------|-------------|-----------|---------------------|
-| **1** | **Gramática da Linguagem (BNF)** | 14/01/2026 | Definição formal da Mini-Linguagem utilizando notação BNF/EBNF | • Arquivo `miniPascal.g4`<br>• Exemplos de códigos válidos/inválidos<br>• Documentação da gramática |
-| **2** | **Analisador Léxico (Scanner)** | 21/01/2026 | Módulo de tokenização do código fonte | • `miniPascalLexer` (gerado pelo ANTLR)<br>• `MiniPascalLexerTest.java`<br>• Relatórios de tokens |
-| **3** | **Analisador Sintático e Semântico** | 28/01/2026 | Validação sintática (AST) e verificação semântica (tipos, escopos) | • `miniPascalParser` (gerado pelo ANTLR)<br>• `MiniPascalSemanticVisitor.java`<br>• `SymbolTable.java`<br>• `MiniPascalParserTest.java` |
-| **4** | **Gerador de Código Intermediário** | 04/02/2026 | Tradução da AST para Código de Três Endereços (C3E) | • `MiniPascalCodeGenerator.java`<br>• `Instruction.java`<br>• Arquivos `.tac` gerados |
-| **5** | **Ajustes Finais e Apresentação** | 11/02/2026 | Compilador completo com documentação e apresentação ao vivo | • README.md completo<br>• Documentação de uso<br>• Apresentação funcional |
+|N|            Entrega            |Data Limite|                  Descrição                     |   Artefatos Principais(Arquivos)   |
+|-|-------------------------------|-----------|------------------------------------------------|------------------------------------|
+|1|Gramática da Linguagem (BNF)   | 14/01/2026| Definição formal da Mini-Linguagem(BNF)        |`miniPascal.g4`e gramática BNF      |
+|2|Analisador Léxico (Scanner)    | 21/01/2026| Módulo de tokenização do código fonte          |`miniPascalLexer`  gerado pelo ANTLR|
+|3|Analisador Sintático/Semântico | 28/01/2026| Validação sintática/Verificação semântica      |`miniPascalParser` gerado pelo ANTLR|
+|4|Gerador de Código Intermediário| 04/02/2026| Tradução da AST para Código Três Endereços(C3E)|`MiniPascalCodeGenerator.java`      |
+|5|Ajustes Finais e Apresentação  | 11/02/2026| Compilador completo, documentação, apresentação| README.md, docs. e Apresentação    |
 
 ---
 
