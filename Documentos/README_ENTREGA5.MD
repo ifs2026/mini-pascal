@@ -74,8 +74,8 @@ Esta entrega final consolida **todas as etapas anteriores** em um compilador com
 ┌─────────────────────────────────────────────────────────────┐
 │                    COMPILADOR MINI-PASCAL                    │
 └─────────────────────────────────────────────────────────────┘
-│
-▼
+                              │
+                              ▼
 ┌─────────────────────────────────────────────────────────────┐
 │  FASE 1: ANÁLISE LÉXICA (Scanner)                           │
 │  ─────────────────────────────────────────────────────────  │
@@ -83,8 +83,8 @@ Esta entrega final consolida **todas as etapas anteriores** em um compilador com
 │  Saída: Sequência de Tokens                                 │
 │  Componente: miniPascalLexer.java (ANTLR)                   │
 └─────────────────────────────────────────────────────────────┘
-│
-▼
+                              │
+                              ▼
 ┌─────────────────────────────────────────────────────────────┐
 │  FASE 2: ANÁLISE SINTÁTICA (Parser)                         │
 │  ─────────────────────────────────────────────────────────  │
@@ -92,8 +92,8 @@ Esta entrega final consolida **todas as etapas anteriores** em um compilador com
 │  Saída: Árvore Sintática Abstrata (AST)                     │
 │  Componente: miniPascalParser.java (ANTLR)                  │
 └─────────────────────────────────────────────────────────────┘
-│
-▼
+                              │
+                              ▼
 ┌─────────────────────────────────────────────────────────────┐
 │  FASE 3: ANÁLISE SEMÂNTICA                                  │
 │  ─────────────────────────────────────────────────────────  │
@@ -104,8 +104,8 @@ Esta entrega final consolida **todas as etapas anteriores** em um compilador com
 │    - SymbolTable.java                                       │
 │    - Type.java                                              │
 └─────────────────────────────────────────────────────────────┘
-│
-▼
+                              │
+                              ▼
 ┌─────────────────────────────────────────────────────────────┐
 │  FASE 4: GERAÇÃO DE CÓDIGO INTERMEDIÁRIO                    │
 │  ─────────────────────────────────────────────────────────  │
@@ -117,8 +117,8 @@ Esta entrega final consolida **todas as etapas anteriores** em um compilador com
 │    - TemporaryManager.java                                  │
 │    - LabelManager.java                                      │
 └─────────────────────────────────────────────────────────────┘
-│
-▼
+                              │
+                              ▼
 ┌─────────────────────────────────────────────────────────────┐
 │  FASE 5: OTIMIZAÇÃO (Opcional)                              │
 │  ─────────────────────────────────────────────────────────  │
@@ -126,12 +126,12 @@ Esta entrega final consolida **todas as etapas anteriores** em um compilador com
 │  Saída: Código TAC otimizado                                │
 │  Componente: TACOptimizer.java                              │
 └─────────────────────────────────────────────────────────────┘
-│
-▼
-┌─────────────────┐
-│  CÓDIGO FINAL   │
-│  (TAC otimizado)│
-└─────────────────┘
+                              │
+                              ▼
+                     ┌─────────────────┐
+                     │  CÓDIGO FINAL   │
+                     │  (TAC otimizado)│
+                     └─────────────────┘
 
 
 
