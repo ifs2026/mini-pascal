@@ -71,8 +71,10 @@ Esta entrega final consolida **todas as etapas anteriores** em um compilador com
 
 ### Diagrama de Componentes
 
+
+
 ┌─────────────────────────────────────────────────────────────┐
-│                    COMPILADOR MINI-PASCAL                    │
+│                    COMPILADOR MINI-PASCAL                   │
 └─────────────────────────────────────────────────────────────┘
                               │
                               ▼
