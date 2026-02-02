@@ -1,6 +1,7 @@
 # 🚀 Compilador Mini-Pascal
 
 **Projeto de Compiladores - IFS Campus Itabaiana - 2025.2**
+
 Desenvolvido para a disciplina de LINGUAGENS FORMAIS, AUTOMATOS E COMPILADORES.
 
 [![Java](https://img.shields.io/badge/Java-25-orange.svg)](https://www.oracle.com/java/)
