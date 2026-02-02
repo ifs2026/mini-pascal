@@ -322,6 +322,451 @@ ComandoSintaxeDescriçãoExemploAtribuiçãovar := expr;Atribui valor a uma vari
 
 
 
+🔧 Estrutura da Gramática ANTLR
+Localização do Arquivosrc/main/antlr4/miniPascal.g4
+Estrutura Geral do Arquivo
+O arquivo miniPascal.g4 está organizado em duas seções principais:
+Regras do Parser (sintáticas) - Definem a estrutura da linguagem
+Regras do Lexer (léxicas) - Definem os tokens
+
+Principais Regras do Parser
+
+grammar miniPascal;
+
+// ===== REGRAS DO PARSER (Sintáticas) =====
+
+program
+    : PROGRAM identifier SEMICOLON 
+      variableDeclarationPart? 
+      compoundStatement DOT EOF
+    ;
+
+variableDeclarationPart
+    : VAR variableDeclaration (SEMICOLON variableDeclaration)* SEMICOLON?
+    ;
+
+variableDeclaration
+    : identifierList COLON type
+    ;
+
+identifierList
+    : identifier (COMMA identifier)*
+    ;
+
+type
+    : INTEGER_TYPE
+    | REAL_TYPE
+    | STRING_TYPE
+    | BOOLEAN_TYPE
+    ;
+
+compoundStatement
+    : BEGIN statement (SEMICOLON statement)* END
+    ;
+
+statement
+    : assignmentStatement
+    | ifStatement
+    | whileStatement
+    | forStatement
+    | ioStatement
+    | compoundStatement
+    | // comando vazio
+    ;
+
+assignmentStatement
+    : identifier ASSIGN expression
+    ;
+
+ifStatement
+    : IF expression THEN statement (ELSE statement)?
+    ;
+
+whileStatement
+    : WHILE expression DO statement
+    ;
+
+forStatement
+    : FOR identifier ASSIGN expression (TO | DOWNTO) expression DO statement
+    ;
+
+ioStatement
+    : READ LPAREN identifierList RPAREN
+    | PRINT LPAREN expressionList RPAREN
+    ;
+
+expressionList
+    : expression (COMMA expression)*
+    ;
+
+expression
+    : simpleExpression (relationalOperator simpleExpression)?
+    ;
+
+relationalOperator
+    : EQUAL
+    | NOT_EQUAL
+    | LESS_THAN
+    | LESS_EQUAL
+    | GREATER_THAN
+    | GREATER_EQUAL
+    ;
+
+simpleExpression
+    : term (additiveOperator term)*
+    ;
+
+additiveOperator
+    : PLUS
+    | MINUS
+    | OR
+    ;
+
+term
+    : factor (multiplicativeOperator factor)*
+    ;
+
+multiplicativeOperator
+    : MULTIPLY
+    | DIVIDE
+    | AND
+    ;
+
+factor
+    : identifier
+    | unsignedNumber
+    | stringLiteral
+    | boolLiteral
+    | LPAREN expression RPAREN
+    | NOT factor
+    | (PLUS | MINUS) factor
+    ;
+
+identifier
+    : IDENTIFIER
+    ;
+
+unsignedNumber
+    : INTEGER_LITERAL
+    | REAL_LITERAL
+    ;
+
+stringLiteral
+    : STRING_LITERAL
+    ;
+
+boolLiteral
+    : TRUE
+    | FALSE
+    ;
+
+// ===== REGRAS DO LEXER (Tokens) =====
+
+// Palavras-reservadas
+PROGRAM     : 'program';
+VAR         : 'var';
+BEGIN       : 'begin';
+END         : 'end';
+IF          : 'if';
+THEN        : 'then';
+ELSE        : 'else';
+WHILE       : 'while';
+DO          : 'do';
+FOR         : 'for';
+TO          : 'to';
+DOWNTO      : 'downto';
+READ        : 'read';
+PRINT       : 'print';
+INTEGER_TYPE: 'integer';
+REAL_TYPE   : 'real';
+STRING_TYPE : 'string';
+BOOLEAN_TYPE: 'boolean';
+TRUE        : 'true';
+FALSE       : 'false';
+AND         : 'and';
+OR          : 'or';
+NOT         : 'not';
+
+// Operadores
+ASSIGN      : ':=';
+EQUAL       : '=';
+NOT_EQUAL   : '<>';
+LESS_THAN   : '<';
+LESS_EQUAL  : '<=';
+GREATER_THAN: '>';
+GREATER_EQUAL: '>=';
+PLUS        : '+';
+MINUS       : '-';
+MULTIPLY    : '*';
+DIVIDE      : '/';
+
+// Delimitadores
+LPAREN      : '(';
+RPAREN      : ')';
+SEMICOLON   : ';';
+COLON       : ':';
+COMMA       : ',';
+DOT         : '.';
+
+// Literais
+IDENTIFIER
+    : [a-zA-Z_][a-zA-Z0-9_]*
+    ;
+
+INTEGER_LITERAL
+    : [0-9]+
+    ;
+
+REAL_LITERAL
+    : [0-9]+ '.' [0-9]+
+    ;
+
+STRING_LITERAL
+    : '\'' (~['\r\n])* '\''
+    ;
+
+// Comentários e espaços em branco
+COMMENT
+    : '{' .*? '}' -> skip
+    | '(*' .*? '*)' -> skip
+    | '//' ~[\r\n]* -> skip
+    ;
+
+WS
+    : [ \t\r\n]+ -> skip
+    ;
+
+
+✅ Exemplos de Código Válido
+
+Exemplo 1: Programa Completo com Todos os Recursos
+
+program exemploValido;
+var
+    x, y: integer;
+    z: real;
+begin
+    read(x, y);
+    z := x + y * 2;
+    if z > 10 then
+        print('maior que 10', z)
+    else
+        print('menor ou igual a 10', z);
+    for x := 1 to 5 do
+        print(x);
+end.
+
+Análise:
+✅ Declaração de programa: program exemploValido;
+✅ Declaração de múltiplas variáveis: x, y: integer; e z: real;
+✅ Entrada de dados: read(x, y);
+✅ Expressão aritmética com precedência: x + y * 2 → x + (y * 2)
+✅ Condicional completa: if-then-else
+✅ Saída com múltiplos valores: print('maior que 10', z)
+✅ Laço for crescente: for x := 1 to 5 do
+✅ Finalização correta: end.
+
+Exemplo 2: Atribuição e Saída Simples
+
+program Exemplo1;
+var
+    x, y : integer;
+begin
+    x := 10;
+    y := x + 5;
+    print(x, y);
+end.
+
+Análise:
+✅ Atribuições simples
+✅ Expressão aritmética básica
+✅ Saída de múltiplos valores
+Saída Esperada:
+10 15
+
+Exemplo 3: Condicional com Entrada de Dados
+
+program Exemplo2;
+var
+    nota : real;
+begin
+    read(nota);
+    if nota >= 7.0 then
+        print('Aprovado')
+    else
+        print('Reprovado');
+end.
+
+Análise:
+✅ Variável do tipo real
+✅ Entrada de dados do usuário
+✅ Comparação relacional: >=
+✅ Strings literais em aspas simples
+✅ Estrutura if-then-else completa
+Execução:
+
+Entrada: 8.5
+Saída: Aprovado
+
+Entrada: 5.0
+Saída: Reprovado
+
+Exemplo 4: Laço While com Bloco Composto
+
+program Exemplo3;
+var
+    i : integer;
+begin
+    i := 1;
+    while i <= 5 do
+    begin
+        print('Valor de i:', i);
+        i := i + 1;
+    end;
+end.
+
+Análise:
+✅ Laço while com condição
+✅ Bloco composto: begin...end dentro do while
+✅ Incremento de variável
+✅ Saída com string e variável
+Saída Esperada:
+
+Valor de i: 1
+Valor de i: 2
+Valor de i: 3
+Valor de i: 4
+Valor de i: 5
+
+Exemplo 5: Laços For Crescente e Decrescente
+
+program Exemplo4;
+var
+    i : integer;
+begin
+    for i := 1 to 3 do
+        print('Contando:', i);
+
+    for i := 3 downto 1 do
+        print('Decrescendo:', i);
+end.
+
+Análise:
+✅ Laço for crescente com to
+✅ Laço for decrescente com downto
+✅ Múltiplos comandos sequenciais
+Saída Esperada:
+
+Contando: 1
+Contando: 2
+Contando: 3
+Decrescendo: 3
+Decrescendo: 2
+Decrescendo: 1
+
+❌ Exemplos de Código Inválido
+Erro Completo: Múltiplos Erros Sintáticos
+
+program exemploInvalido
+var
+    x, y integer     { ERRO: falta ":" entre identificadores e tipo }
+    z: real
+
+begin
+    read(x y);       { ERRO: falta "," entre os parâmetros }
+    z := x + ;       { ERRO: expressão incompleta, operador sem operando }
+    if z > 10        { ERRO: falta "then" }
+        print('maior que 10', z)
+    else
+        print('menor ou igual a 10' z);  { ERRO: falta "," antes de z }
+
+    for i := 1 to 5  { ERRO: variável i não declarada e falta "do" }
+        print(i)
+end                  { ERRO: falta "." ao final do programa }
+
+
+Erros Identificados:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LinhaErroDescriçãoCorreção1Falta ;Após nome do programaprogram exemploInvalido;3Falta :Entre identificadores e tipox, y: integer;4Falta ;Após declaração de variávelz: real;7Falta ,Entre parâmetros do readread(x, y);8Expressão incompletaOperador + sem operando direitoz := x + y;9Falta thenApós condição do ifif z > 10 then12Falta ,Antes do segundo argumentoprint('...', z);14Variável não declaradai não foi declaradaAdicionar i: integer;14Falta doApós expressão do forfor i := 1 to 5 do16Falta .Ao final do programaend.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
