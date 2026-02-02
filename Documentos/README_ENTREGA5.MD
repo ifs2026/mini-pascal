@@ -1,4 +1,4 @@
-# 📕 Entrega 5: Ajustes Finais e Apresentação
+📕 Entrega 5: Ajustes Finais e Apresentação
 
 **Compilador Mini-Pascal - IFS Campus Itabaiana 2025.2**
 
