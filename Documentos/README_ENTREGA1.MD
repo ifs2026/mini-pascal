@@ -317,9 +317,17 @@ Válidos: x, contador, valor_total, Nota1
 Inválidos: 1x (inicia com dígito), x-y (hífen não permitido)
 
 🛠️ Comandos Suportados
+## 🛠️ Comandos Suportados
 
-ComandoSintaxeDescriçãoExemploAtribuiçãovar := expr;Atribui valor a uma variávelx := 10 + y * 2;Entradaread(var1, var2, ...);Lê valores do usuárioread(x, y);Saídaprint(expr1, expr2, ...);Imprime valores na telaprint('Resultado:', x);Condicionalif expr then cmd [else cmd]Executa comando condicionalmenteif x > 0 then y := 1 else y := 0;Laço Whilewhile expr do cmdRepete enquanto condição for verdadeirawhile i < 10 do i := i + 1;Laço For (crescente)for var := expr to expr do cmdLaço com contador crescentefor i := 1 to 5 do print(i);Laço For (decrescente)for var := expr downto expr do cmdLaço com contador decrescentefor i := 5 downto 1 do print(i);
-
+| Comando | Sintaxe | Descrição | Exemplo |
+|---------|---------|-----------|---------|
+| **Atribuição** | `var := expr;` | Atribui valor a uma variável | `x := 10 + y * 2;` |
+| **Entrada** | `read(var1, var2, ...);` | Lê valores do usuário | `read(x, y);` |
+| **Saída** | `print(expr1, expr2, ...);` | Imprime valores na tela | `print('Resultado:', x);` |
+| **Condicional** | `if expr then cmd [else cmd]` | Executa comando condicionalmente | `if x > 0 then y := 1 else y := 0;` |
+| **Laço While** | `while expr do cmd` | Repete enquanto condição for verdadeira | `while i < 10 do i := i + 1;` |
+| **Laço For (crescente)** | `for var := expr to expr do cmd` | Laço com contador crescente | `for i := 1 to 5 do print(i);` |
+| **Laço For (decrescente)** | `for var := expr downto expr do cmd` | Laço com contador decrescente | `for i := 5 downto 1 do print(i);` |
 
 
 🔧 Estrutura da Gramática ANTLR
@@ -687,92 +695,315 @@ end                  { ERRO: falta "." ao final do programa }
 
 Erros Identificados:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-LinhaErroDescriçãoCorreção1Falta ;Após nome do programaprogram exemploInvalido;3Falta :Entre identificadores e tipox, y: integer;4Falta ;Após declaração de variávelz: real;7Falta ,Entre parâmetros do readread(x, y);8Expressão incompletaOperador + sem operando direitoz := x + y;9Falta thenApós condição do ifif z > 10 then12Falta ,Antes do segundo argumentoprint('...', z);14Variável não declaradai não foi declaradaAdicionar i: integer;14Falta doApós expressão do forfor i := 1 to 5 do16Falta .Ao final do programaend.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Linha 1: Falta ; após o nome do programa
+Linha 3: Falta : na declaração de variável
+Linha 7: Falta , entre parâmetros do read
+Linha 8: Expressão incompleta (x +)
+Linha 9: Falta palavra-reservada then
+Linha 12: Falta , antes de z
+Linha 14: Variável i não declarada
+Linha 14: Falta palavra-reservada do
+Linha 16: Falta . ao final do programa
+
+Erro 1: Falta de Ponto Final
+program Erro1;
+begin
+    print('Sem ponto final')
+end   // ❌ ERRO: falta o "."
+
+Erro: Programa deve terminar com . após end
+
+Correção:
+program Erro1;
+begin
+    print('Sem ponto final')
+end.  // ✅ Correto
+
+Erro 2: Variável Não Declarada
+program Erro2;
+begin
+    x := 10;   // ❌ ERRO: "x" não foi declarado
+end.
+
+Erro: Variável x usada sem declaração prévia
+
+Correção:
+program Erro2;
+var
+    x: integer;  // ✅ Declaração adicionada
+begin
+    x := 10;
+end.
+
+Erro 3: Falta de THEN
+program Erro3;
+var
+    a : integer;
+begin
+    if a = 10 print('Erro');  // ❌ ERRO: falta "then"
+end.
+
+Erro: Condicional if sem palavra-reservada then
+
+Correção:
+program Erro3;
+var
+    a : integer;
+begin
+    if a = 10 then print('Erro');  // ✅ Correto
+end.
+
+Erro 4: Incompatibilidade de Tipos (Erro Semântico)
+program Erro4;
+var
+    x : integer;
+begin
+    x := 'texto';   // ❌ ERRO: atribuição inválida (string em variável integer)
+end.
+
+Erro: Tipo incompatível na atribuição (detectado na análise semântica, não sintática)
+
+Correção:
+program Erro4;
+var
+    x : string;  // ✅ Tipo correto
+begin
+    x := 'texto';
+end.
+
+Ou:
+
+program Erro4;
+var
+    x : integer;
+begin
+    x := 123;  // ✅ Valor compatível
+end.
+
+
+📊 Precedência de Operadores
+A precedência define a ordem de avaliação das operações em expressões complexas.
+
+| Precedência | Operadores | Tipo | Associatividade | Exemplo |
+|-------------|------------|------|-----------------|---------|
+| **1 (Mais alta)** | `not`, `+` (unário), `-` (unário) | Unários | Direita | `not true`, `-x`, `+5` |
+| **2** | `*`, `/`, `and` | Multiplicativos | Esquerda | `a * b`, `x / y`, `p and q` |
+| **3** | `+`, `-`, `or` | Aditivos | Esquerda | `a + b`, `x - y`, `p or q` |
+| **4 (Mais baixa)** | `=`, `<>`, `<`, `<=`, `>`, `>=` | Relacionais | Não associativo | `a = b`, `x > 10` |
+
+Exemplos de Avaliação
+
+Exemplo 1: Precedência de Multiplicação
+z := 10 + 5 * 2;
+
+Avaliação:
+1. 5 * 2 = 10    (multiplicação primeiro)
+2. 10 + 10 = 20  (depois adição)
+Resultado: z = 20
+
+Exemplo 2: Uso de Parênteses
+z := (10 + 5) * 2;
+
+Avaliação:
+1. (10 + 5) = 15  (parênteses primeiro)
+2. 15 * 2 = 30    (depois multiplicação)
+Resultado: z = 30
+
+Exemplo 3: Operadores Lógicos
+resultado := not x and y;
+
+Avaliação:
+1. not x          (not tem maior precedência)
+2. (not x) and y  (depois and)
+
+Exemplo 4: Operadores Relacionais
+valido := x + 5 > y * 2;
+
+Avaliação:
+1. x + 5          (expressão aritmética esquerda)
+2. y * 2          (expressão aritmética direita)
+3. (x + 5) > (y * 2)  (comparação relacional)
+
+🚀 Como Gerar o Parser/Lexer
+Pré-requisitos
+Certifique-se de ter instalado:
+✅ Java JDK 17 ou superior
+✅ Maven 3.9+
+✅ Variável de ambiente JAVA_HOME configurada
+
+Passo 1: Gerar Código com ANTLR
+Execute o comando Maven para gerar o parser e lexer:
+mvn clean generate-sources
+
+Saída esperada:
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< minipascal:compilador-minipascal >------------------
+[INFO] Building compilador-minipascal 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ compilador-minipascal ---
+[INFO] Deleting C:\...\target
+[INFO] 
+[INFO] --- antlr4:4.13.1:antlr4 (antlr) @ compilador-minipascal ---
+[INFO] ANTLR 4: Processing source directory C:\...\src\main\antlr4
+[INFO] Processing grammar: miniPascal.g4
+[INFO] 
+[INFO] --- build-helper:3.6.0:add-source (add-source) @ compilador-minipascal ---
+[INFO] Source directory: C:\...\target\generated-sources\antlr4 added.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+
+Passo 2: Verificar Arquivos Gerados
+Navegue até o diretório de arquivos gerados:
+cd target/generated-sources/antlr4
+dir  # Windows
+ls   # Linux/Mac
+
+Arquivos criados:
+miniPascalLexer.java
+miniPascalParser.java
+miniPascalBaseVisitor.java
+miniPascalVisitor.java
+miniPascal.tokens
+miniPascalLexer.tokens
+
+Passo 3: Compilar o Projeto
+mvn compile
+
+Saída esperada:
+[INFO] --- compiler:3.13.0:compile (default-compile) @ compilador-minipascal ---
+[INFO] Compiling 11 source files
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+
+Passo 4: Executar o Menu Interativo
+java -cp target/classes Main
+ou
+mvn exec:java
+
+Menu exibido:
+╔════════════════════════════════════════════════════════╗
+║   🚀 MINI-PASCAL COMPILADOR - IFS Itabaiana 2025.2    ║
+║        Menu de Execução das Entregas                   ║
+╚════════════════════════════════════════════════════════╝
+
+📋 ESCOLHA UMA OPÇÃO:
+════════════════════════════════════════════════════════
+1 - Entrega 1: Gerar parser/lexer (mvn generate-sources)
+2 - Entrega 2: Compilar projeto (mvn compile)
+3 - Entrega 3: Rodar todos os testes (mvn test)
+4 - Testes apenas do Lexer
+5 - Testes apenas do Parser
+6 - Limpar projeto (mvn clean)
+7 - Demo Semântica (tabela de símbolos + escopos)
+8 - Entrega 4: Geração de Código Intermediário (C3E)
+9 - 📂 Ver localização dos relatórios de testes
+0 - Sair
+════════════════════════════════════════════════════════
+Opção:
+
+Selecione a Opção 1 para gerar o parser/lexer novamente.
+
+✅ Validação e Testes
+
+Teste 1: Verificar Geração de Arquivos
+Após executar mvn generate-sources, verifique se os arquivos foram criados:
+ls -la target/generated-sources/antlr4/
+
+Resultado esperado:
+miniPascalLexer.java
+miniPascalParser.java
+miniPascalBaseVisitor.java
+miniPascalVisitor.java
+miniPascal.tokens
+miniPascalLexer.tokens
+
+Teste 2: Compilar sem Erros
+mvn clean compile
+Resultado esperado:
+[INFO] BUILD SUCCESS
+
+Teste 3: Validar Código Válido
+Crie um arquivo de teste teste_valido.pas:
+program TesteValido;
+var
+    x: integer;
+begin
+    x := 10;
+    print(x);
+end.
+
+Execute o parser (após implementar testes na Entrega 2):
+mvn test -Dtest=MiniPascalParserTest#testProgramaValido
+
+Teste 4: Validar Código Inválido
+Crie um arquivo de teste teste_invalido.pas:
+program TesteInvalido
+var
+    x: integer
+begin
+    x := 10
+end
+
+Erros esperados:
+Falta ; após nome do programa
+Falta ; após declaração de variável
+Falta ; após atribuição
+Falta . ao final do programa
+
+🎯 Checklist de Entrega
+
+Documentação
+✅ Gramática BNF/EBNF completa documentada
+✅ Explicação de cada regra sintática
+✅ Exemplos de código válido (5 exemplos)
+✅ Exemplos de código inválido com erros explicados (5 exemplos)
+✅ Precedência de operadores documentada
+✅ Comandos suportados especificados
+
+Implementação
+✅ Arquivo miniPascal.g4 criado e funcional
+✅ Parser e Lexer gerados com sucesso pelo ANTLR
+✅ Projeto compila sem erros (mvn compile)
+✅ Arquivos gerados localizados em target/generated-sources/antlr4/
+
+Testes
+✅ Geração de parser/lexer validada
+✅ Compilação do projeto validada
+✅ Menu interativo funcional
+
+Entrega
+✅ README_ENTREGA1.md completo
+✅ Código-fonte versionado no Git
+✅ Documentação clara e organizada
+
+📞 SuportePara dúvidas sobre esta entrega:
+Email: jeds@outlook.com.br
+GitHub: https://github.com/jeds2025
+Equipe:
+Enaldo Dantas  - jose.santos259@academico.ifs.edu.br
+Agnaldo Neto   - jose.neto044@academico.ifs.edu.br
+Vitorio Mota   - vitorio.mota085@academico.ifs.edu.br
+Lucas Oliveira - lucas.oliveira031@academico.ifs.edu.br
+
+📚 Referências
+ANTLR 4 Documentation: https://www.antlr.org/
+The Definitive ANTLR 4 Reference - Terence Parr
+BNF/EBNF Notation: ISO/IEC 14977
+Pascal Language Reference: ISO 7185
+Compilers: Principles, Techniques, and Tools - Aho, Lam, Sethi, Ullman (Dragon Book)
+
+## 📝 Histórico de Versões
+
+| Versão | Data | Descrição | Autor |
+|--------|------|-----------|-------|
+| 1.0 | 14/01/2026 | Versão inicial da entrega | Equipe Mini-Pascal |
+
+
+Entrega 1 concluída com sucesso! ✅
+Desenvolvido para IFS Campus Itabaiana - 2025.2
+Disciplina: LINGUAGENS FORMAIS, AUTÔMATOS E COMPILADORES
+Professor: Marlos Tacio Silva
