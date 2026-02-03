@@ -319,15 +319,15 @@ Inválidos: 1x (inicia com dígito), x-y (hífen não permitido)
 🛠️ Comandos Suportados
 ## 🛠️ Comandos Suportados
 
-| Comando | Sintaxe | Descrição | Exemplo |
-|---------|---------|-----------|---------|
-| **Atribuição** | `var := expr;` | Atribui valor a uma variável | `x := 10 + y * 2;` |
-| **Entrada** | `read(var1, var2, ...);` | Lê valores do usuário | `read(x, y);` |
-| **Saída** | `print(expr1, expr2, ...);` | Imprime valores na tela | `print('Resultado:', x);` |
-| **Condicional** | `if expr then cmd [else cmd]` | Executa comando condicionalmente | `if x > 0 then y := 1 else y := 0;` |
-| **Laço While** | `while expr do cmd` | Repete enquanto condição for verdadeira | `while i < 10 do i := i + 1;` |
-| **Laço For (crescente)** | `for var := expr to expr do cmd` | Laço com contador crescente | `for i := 1 to 5 do print(i);` |
-| **Laço For (decrescente)** | `for var := expr downto expr do cmd` | Laço com contador decrescente | `for i := 5 downto 1 do print(i);` |
+| Comando                | Sintaxe                              | Descrição                               | Exemplo                             |
+|------------------------|--------------------------------------|-----------------------------------------|-------------------------------------|
+| Atribuição             | `var := expr;`                       | Atribui valor a uma variável            | `x := 10 + y * 2;`                  |
+| Entrada                | `read(var1, var2, ...);`             | Lê valores do usuário                   | `read(x, y);`                       |
+| Saída                  | `print(expr1, expr2, ...);`          | Imprime valores na tela                 | `print('Resultado:', x);`           |
+| Condicional            | `if expr then cmd [else cmd]`        | Executa comando condicionalmente        | `if x > 0 then y := 1 else y := 0;` |
+| Laço While             | `while expr do cmd`                  | Repete enquanto condição for verdadeira | `while i < 10 do i := i + 1;`       |
+| Laço For (crescente)   | `for var := expr to expr do cmd`     | Laço com contador crescente             | `for i := 1 to 5 do print(i);`      |
+| Laço For (decrescente) | `for var := expr downto expr do cmd` | Laço com contador decrescente           | `for i := 5 downto 1 do print(i);`  |
 
 
 🔧 Estrutura da Gramática ANTLR
