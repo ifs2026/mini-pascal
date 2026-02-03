@@ -570,9 +570,9 @@ Checklist de Validação
 
 ## 📝 Histórico de Versões
 
-| Versão | Data | Descrição | Autor |
-|--------|------|-----------|-------|
-| 1.0 | 21/01/2026 | Versão inicial da entrega | Equipe Mini-Pascal |
+| Versão | Data       | Descrição                 | Autor              |
+|--------|------------|---------------------------|--------------------|
+| 1.0    | 21/01/2026 | Versão inicial da entrega | Equipe Mini-Pascal |
 
 
 📞 Suporte
