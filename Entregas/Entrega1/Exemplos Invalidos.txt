@@ -1,3 +1,4 @@
+// Exemplos de programas INVÁLIDOS
 // ===============================
 
 program Erro1;
@@ -30,7 +31,41 @@ begin
     x := 'texto';   // atribuição inválida: string em variável integer
 end.
 
+// ===============================
 
+// Inválido 5 – falta de ponto e vírgula após o cabeçalho
+program p
+var x: integer;
+begin
+  x := 10;
+end.
 
+// ===============================
 
+//  Inválido 6 – atribuição sem expressão
+program p;
+var x: integer;
+begin
+  x := ;
+end.
+
+// ===============================
+
+// Inválido 7 – if sem then
+program p;
+var x: integer;
+begin
+  if x > 0 print(x);
+end.
+
+// ===============================
+
+// Inválido 8 – tipo não declarado na gramática
+program p;
+var x: char;
+begin
+  x := 'a';
+end.
+
+// ===============================
 

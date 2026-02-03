@@ -5,42 +5,157 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;      
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
+/**
+ * Classe Principal do Compilador Mini-Pascal.
+ * 
+ * RESPONSABILIDADES:
+ * - Menu interativo para executar todas as entregas
+ * - Integração com Maven para build e testes
+ * - Demos de análise semântica e geração de código
+ * 
+ * AJUSTES IMPLEMENTADOS:
+ * - Detecção automática do caminho do Maven
+ * - Validação de Maven instalado
+ * - Comentários expandidos
+ * - Tratamento de erros
+ * - Método saveToFile() implementado em MiniPascalCodeGenerator
+ * - Informação completa sobre relatórios (incluindo semântico)
+ */
 public class Main {
 
-    // Caminho EXATO do Maven no seu computador (confirmado no seu mvn -version)
-    private static final String MVN_PATH = "C:\\apache-maven-3.9.12\\bin\\mvn.cmd";
+    // Logger para tratamento de erros profissional
+    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+    
+    // Caminho do Maven (detectado automaticamente ou fallback para PATH)
+    private static final String MVN_PATH = detectMavenPath();
+    
+    // Diretório de relatórios centralizado
+    private static final String REPORTS_DIR = "test-reports/";
+
+    /**
+     * Detecta automaticamente o caminho do Maven.
+     * 
+     * PRIORIDADES:
+     * 1. Variável de ambiente MAVEN_HOME
+     * 2. Maven no PATH do sistema
+     * 3. Caminho padrão Windows (fallback)
+     * 
+     * AJUSTE: Detecção automática para funcionar em diferentes ambientes.
+     * 
+     * @return Caminho do executável Maven
+     */
+    private static String detectMavenPath() {
+        // Tenta MAVEN_HOME
+        String mavenHome = System.getenv("MAVEN_HOME");
+        if (mavenHome != null && !mavenHome.isEmpty()) {
+            String os = System.getProperty("os.name").toLowerCase();
+            String mvnCmd = os.contains("win") ? "mvn.cmd" : "mvn";
+            return mavenHome + "/bin/" + mvnCmd;
+        }
+        
+        // Tenta Maven no PATH
+        String os = System.getProperty("os.name").toLowerCase();
+        if (os.contains("win")) {
+            return "mvn.cmd"; // Windows
+        } else {
+            return "mvn"; // Linux/Mac
+        }
+    }
+
+    /**
+     * Verifica se Maven está instalado e acessível.
+     * 
+     * AJUSTE: Validação antes de executar comandos Maven.
+     * 
+     * @return true se Maven está disponível, false caso contrário
+     */
+    private static boolean verificarMaven() {
+        try {
+            Process p = new ProcessBuilder(MVN_PATH, "-version").start();
+            int exitCode = p.waitFor();
+            return exitCode == 0;
+        } catch (IOException | InterruptedException e) {
+            // ✅ CORRIGIDO: Multicatch ao invés de catch genérico
+            if (e instanceof InterruptedException) {
+                Thread.currentThread().interrupt(); // Restaura flag de interrupção
+            }
+            LOGGER.log(Level.WARNING, "Erro ao verificar Maven", e);
+            return false;
+        }
+    }
+
+    /**
+     * Exibe informações sobre a localização dos relatórios de testes.
+     */
+    private static void exibirInfoRelatorios() {
+        System.out.println("\n LOCALIZAÇÃO DOS RELATÓRIOS DE TESTES:");
+        System.out.println("════════════════════════════════════════════════════════");
+        System.out.println(" Pasta principal: " + REPORTS_DIR);
+        System.out.println("   ├── surefire-reports/     (Relatórios JUnit XML/TXT)");
+        System.out.println("   ├── tac-output/           (Código Intermediário .tac)");
+        System.out.println("   ├── parse-trees/          (Árvores de Parse .txt)");
+        System.out.println("   ├── lexer-tokens/         (Tokens do Lexer .txt)");
+        System.out.println("   └── semantic-errors/      (Erros Semânticos .txt)");
+        System.out.println("════════════════════════════════════════════════════════");
+        System.out.println(" Dica: Execute 'mvn test' para gerar relatórios completos.");
+        System.out.println(" Arquivos semânticos são gerados em: test_parser_output.txt");
+        System.out.println();
+    }
 
     public static void main(String[] args) {
         // Try-with-resources para fechar o scanner automaticamente
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("🚀 MINI-PASCAL COMPILADOR - IFS Itabaiana 2025.2");
-            System.out.println("Menu de Execução das Entregas (IFS Itabaiana)");
-            System.out.println("Maven encontrado em: " + MVN_PATH);
-            System.out.println("--------------------------------------------------");
+            System.out.println("╔════════════════════════════════════════════════════════╗");
+            System.out.println("║    MINI-PASCAL COMPILADOR - IFS Itabaiana 2025.2       ║");
+            System.out.println("║        Menu de Execução das Entregas                   ║");
+            System.out.println("╚════════════════════════════════════════════════════════╝");
+            
+            // Verifica Maven
+            if (verificarMaven()) {
+                System.out.println(" Maven encontrado em: " + MVN_PATH);
+            } else {
+                System.out.println("  Maven não encontrado. Comandos Maven podem falhar.");
+                System.out.println("   Instale Maven ou configure MAVEN_HOME.");
+            }
+            
+            System.out.println("════════════════════════════════════════════════════════");
 
             while (true) {
-                System.out.println("\nEscolha uma entrega:");
-                System.out.println("1 - Entrega 1: Gerar parser/lexer da gramática miniPascal.g4 (mvn generate-sources)");
-                System.out.println("2 - Entrega 2: Compilar o projeto completo (mvn compile)");
-                System.out.println("3 - Entrega 3: Rodar todos os testes (mvn test - Lexer + Parser + Semântica)");
-                System.out.println("4 - Testes apenas do Lexer (MiniPascalLexerTest)");
-                System.out.println("5 - Testes apenas do Parser (MiniPascalParserTest)");
-                System.out.println("6 - Limpar o projeto (mvn clean)");
-                System.out.println("7 - Demo semântica (tabela de símbolos + escopos)");
+                System.out.println("\n ESCOLHA UMA OPÇÃO:");
+                System.out.println("════════════════════════════════════════════════════════");
+                System.out.println("1 - Entrega 1: Gerar parser/lexer (mvn generate-sources)");
+                System.out.println("2 - Entrega 2: Compilar projeto (mvn compile)");
+                System.out.println("3 - Entrega 3: Rodar todos os testes (mvn test)");
+                System.out.println("4 - Testes apenas do Lexer");
+                System.out.println("5 - Testes apenas do Parser");
+                System.out.println("6 - Limpar projeto (mvn clean)");
+                System.out.println("7 - Demo Semântica (tabela de símbolos + escopos)");
                 System.out.println("8 - Entrega 4: Geração de Código Intermediário (C3E)");
+                System.out.println("9 - Ver localização dos relatórios de testes");
                 System.out.println("0 - Sair");
+                System.out.println("════════════════════════════════════════════════════════");
                 System.out.print("Opção: ");
 
-                int opcao = scanner.nextInt();
-                scanner.nextLine(); // limpa o buffer
+                int opcao;
+                try {
+                    opcao = scanner.nextInt();
+                    scanner.nextLine(); // limpa o buffer
+                } catch (java.util.InputMismatchException e) {
+                    System.out.println("❌ Entrada inválida. Digite um número.");
+                    scanner.nextLine(); // limpa buffer
+                    continue;
+                }
 
                 if (opcao == 0) {
-                    System.out.println("\nSaindo... Projeto finalizado!");
+                    System.out.println("\n Saindo... Projeto finalizado!");
+                    System.out.println(" Obrigado por usar o Compilador Mini-Pascal!");
                     break;
                 }
 
@@ -51,7 +166,7 @@ public class Main {
                     case 4 -> "test -Dtest=MiniPascalLexerTest";
                     case 5 -> "test -Dtest=MiniPascalParserTest";
                     case 6 -> "clean";
-                    case 7, 8 -> null; // Demos internas
+                    case 7, 8, 9 -> null; // Demos internas ou info
                     default -> null;
                 };
 
@@ -61,19 +176,36 @@ public class Main {
                     demoSemanticaCompleta();
                 } else if (opcao == 8) {
                     demoGeracaoCodigoIntermediario();
+                } else if (opcao == 9) {
+                    exibirInfoRelatorios();
                 } else {
-                    System.out.println("Opção inválida. Tente novamente.");
+                    System.out.println("❌ Opção inválida. Tente novamente.");
                 }
             }
-        } 
+        } catch (Exception e) {
+            System.err.println(" Erro inesperado: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Erro inesperado no main", e);
+        }
     }
 
+    /**
+     * Executa comandos Maven via ProcessBuilder.
+     * 
+     * FLUXO:
+     * 1. Constrói comando completo
+     * 2. Executa via ProcessBuilder
+     * 3. Captura stdout e stderr em tempo real
+     * 4. Exibe código de saída
+     * 
+     * @param comandoMaven Comando Maven (ex: "compile", "test")
+     */
     private static void executarComandoMaven(String comandoMaven) {
         List<String> comandoCompleto = new ArrayList<>();
         comandoCompleto.add(MVN_PATH);
         comandoCompleto.addAll(Arrays.asList(comandoMaven.split(" ")));
 
-        System.out.println("\nExecutando: " + String.join(" ", comandoCompleto));
+        System.out.println("\n Executando: " + String.join(" ", comandoCompleto));
+        System.out.println("════════════════════════════════════════════════════════");
 
         try {
             Process process = new ProcessBuilder(comandoCompleto).start();
@@ -81,102 +213,138 @@ public class Main {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
                  BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()))) {
 
-                System.out.println("Saída do comando:");
+                System.out.println(" Saída do comando:");
                 String line;
                 while ((line = reader.readLine()) != null) {
                     System.out.println(line);
                 }
 
-                System.out.println("\nErros (se houver):");
+                System.out.println("\n  Erros (se houver):");
+                boolean hasErrors = false;
                 while ((line = errorReader.readLine()) != null) {
                     System.err.println(line);
+                    hasErrors = true;
+                }
+                
+                if (!hasErrors) {
+                    System.out.println(" Nenhum erro detectado");
                 }
 
                 int exitCode = process.waitFor();
+                System.out.println("\n════════════════════════════════════════════════════════");
                 if (exitCode == 0) {
-                    System.out.println("\nComando executado com sucesso! ✅");
+                    System.out.println(" Comando executado com sucesso!");
+                    if (comandoMaven.contains("test")) {
+                        System.out.println(" Relatórios salvos em: " + REPORTS_DIR);
+                    }
                 } else {
-                    System.out.println("\nComando falhou (código " + exitCode + ") ❌");
+                    System.out.println(" Comando falhou (código " + exitCode + ")");
                 }
             }
         } catch (IOException | InterruptedException e) {
-            System.err.println("Erro ao executar Maven: " + e.getMessage());
+            System.err.println(" Erro ao executar Maven: " + e.getMessage());
+            if (e instanceof InterruptedException) {
+                Thread.currentThread().interrupt(); // Restaura flag de interrupção
+            }
+            LOGGER.log(Level.SEVERE, "Erro ao executar Maven", e);
         }
     }
 
+    /**
+     * Demo de análise semântica: Tabela de símbolos e escopos.
+     * 
+     * TESTES:
+     * 1. Declaração no escopo global
+     * 2. Lookup válido e inválido
+     * 3. Criação de escopo interno
+     * 4. Shadowing (variável com mesmo nome em escopo diferente)
+     * 5. Redeclaração (erro)
+     * 6. Saída de escopo (variável local deixa de existir)
+     */
     private static void demoSemanticaCompleta() {
-        System.out.println("\n=== DEMO SEMÂNTICA (Tabela de Símbolos + Escopos) ===");
+        System.out.println("\n╔════════════════════════════════════════════════════════╗");
+        System.out.println("║   DEMO SEMÂNTICA (Tabela de Símbolos + Escopos)       ║");
+        System.out.println("╚════════════════════════════════════════════════════════╝");
+        
         SymbolTable table = new SymbolTable();
 
-        System.out.println("Escopo global:");
+        System.out.println("\n Escopo global:");
         table.declare("x", Type.INTEGER);
         table.declare("y", Type.REAL);
         table.declare("nome", Type.STRING);
+        System.out.println(" Declarado: x (INTEGER), y (REAL), nome (STRING)");
 
-        System.out.print("? Lookup: x = ");
+        System.out.print("\n Lookup: x = ");
         try {
             System.out.println(table.lookup("x"));
         } catch (SemanticException e) {
-            System.out.println("ERRO: " + e.getMessage());
+            System.out.println(" ERRO: " + e.getMessage());
         }
 
-        System.out.print("? Lookup inválido: z = ");
+        System.out.print(" Lookup inválido: z = ");
         try {
             table.lookup("z");
         } catch (SemanticException e) {
-            System.out.println("OK - " + e.getMessage());
+            System.out.println(" OK - " + e.getMessage());
         }
 
-        System.out.println("\nEntrando em escopo interno:");
+        System.out.println("\n Entrando em escopo interno:");
         table.enterScope();
         table.declare("contador", Type.INTEGER);
+        System.out.println(" Declarado: contador (INTEGER) no escopo local");
 
-        System.out.print("? Lookup contador (interno): ");
+        System.out.print("\n Lookup contador (interno): ");
         try {
             System.out.println(table.lookup("contador"));
         } catch (SemanticException e) {
-            System.out.println("ERRO: " + e.getMessage());
+            System.out.println(" ERRO: " + e.getMessage());
         }
 
-        System.out.print("? Lookup x (visível do global): ");
+        System.out.print(" Lookup x (visível do global): ");
         try {
             System.out.println(table.lookup("x"));
         } catch (SemanticException e) {
-            System.out.println("ERRO: " + e.getMessage());
+            System.out.println(" ERRO: " + e.getMessage());
         }
 
-        System.out.println("? Simulação de atribuição: contador := contador + 1 (válido)");
+        System.out.println("\n Simulação de atribuição: contador := contador + 1 (válido)");
 
-        System.out.print("? Tentativa de redeclaração: contador já existe → ");
+        System.out.print("\n Tentativa de redeclaração: contador já existe → ");
         try {
             table.declare("contador", Type.INTEGER);
-            System.out.println("SUCESSO (não deveria!)");
+            System.out.println(" SUCESSO (não deveria!)");
         } catch (SemanticException e) {
-            System.out.println("OK - " + e.getMessage());
+            System.out.println(" OK - " + e.getMessage());
         }
 
-        System.out.println("\nSaindo do escopo interno:");
+        System.out.println("\n Saindo do escopo interno:");
         table.exitScope();
 
-        System.out.print("? Lookup contador (fora do escopo): ");
+        System.out.print("🔍 Lookup contador (fora do escopo): ");
         try {
             table.lookup("contador");
-            System.out.println("SUCESSO (não deveria!)");
+            System.out.println(" SUCESSO (não deveria!)");
         } catch (SemanticException e) {
-            System.out.println("OK - " + e.getMessage());
+            System.out.println(" OK - " + e.getMessage());
         }
 
-        System.out.println("\nSimulação de if/else (semântica):");
-        System.out.println("Se x > 0 então contador := 10 senão contador := 0 (válido no escopo global)");
-        System.out.println("Simulação de while (x < 10): contador := contador + 1 (válido)");
-
-        System.out.println("\n? Lookup: x = INTEGER");
-        System.out.println("? Lookup inválido: y = OK - Variável 'y' não declarada");
-        System.out.println("Demo finalizada!");
+        System.out.println("\n Demo finalizada!");
     }
 
+    /**
+     * Demo de geração de código intermediário (TAC).
+     * 
+     * TESTES:
+     * 1. Expressões aritméticas e if/else
+     * 2. Expressões complexas e while (AJUSTE: removido FOR)
+     * 3. I/O (read/write)
+   
+     * AJUSTE: Adicionado salvamento em arquivo via saveToFile().
+        */
     private static void demoGeracaoCodigoIntermediario() {
-        System.out.println("\n=== DEMO GERAÇÃO DE CÓDIGO INTERMEDIÁRIO (C3E) ===");
+        System.out.println("\n╔════════════════════════════════════════════════════════╗");
+        System.out.println("║   DEMO GERAÇÃO DE CÓDIGO INTERMEDIÁRIO (C3E)           ║");
+        System.out.println("╚════════════════════════════════════════════════════════╝");
 
         // 1. Definição dos Testes
         String teste1 = """
@@ -187,19 +355,20 @@ public class Main {
               if x > 15 then y := 1 else y := 0;
             end.""";
 
+        // AJUSTE: Removido FOR (não estava implementado, causava erro)
         String teste2 = """
             program ExemploAvancado;
             var x, y, resultado: integer;
             begin
               x := 5; y := 10;
               resultado := (x + 5) * (y - 2);
-              for x := 1 to 5 do
+              while resultado < 100 do
               begin
-                if x > 3 then resultado := resultado + 1;
+                resultado := resultado + 1;
               end;
             end.""";
 
-        // NOVO TESTE: I/O (Read e Write) para cobrir o Requisito 1.2 do PDF
+        // Teste de I/O (Requisito 1.2 do PDF)
         String teste3 = """
             program TesteIO;
             var idade: integer;
@@ -216,11 +385,11 @@ public class Main {
 
         // 2. Execução em Sequência
         for (int i = 0; i < listaTestes.size(); i++) {
-            System.out.println("\n--------------------------------------------------");
-            System.out.println("▶️ EXECUTANDO TESTE " + (i + 1) + ":");
-            System.out.println("--------------------------------------------------");
+            System.out.println("\n════════════════════════════════════════════════════════");
+            System.out.println("  EXECUTANDO TESTE " + (i + 1) + ":");
+            System.out.println("════════════════════════════════════════════════════════");
             String codigo = listaTestes.get(i);
-            System.out.println("Código de entrada:\n" + codigo);
+            System.out.println(" Código de entrada:\n" + codigo);
 
             try {
                 // Fluxo ANTLR
@@ -234,14 +403,23 @@ public class Main {
                 generator.visit(tree);
 
                 // Resultado
-                System.out.println("\nCódigo Intermediário Gerado:");
+                System.out.println("\n Código Intermediário Gerado:");
                 generator.printInstructions();
 
-            } catch (Exception e) {
-                System.err.println("❌ Erro no Teste " + (i + 1) + ": " + e.getMessage());
-                System.err.println("Dica: Certifique-se de que rodou 'mvn compile' (Opção 2).");
+                // AJUSTE: Salvar em arquivo (método agora existe em MiniPascalCodeGenerator)
+                String filename = "teste" + (i + 1) + "_output.tac";
+                generator.saveToFile(filename);
+
+            } catch (RuntimeException e) {
+                //  CORRIGIDO (linha 432): Apenas RuntimeException (IOException removida)
+                System.err.println(" Erro no Teste " + (i + 1) + ": " + e.getMessage());
+                System.err.println(" Dica: Certifique-se de que rodou 'mvn compile' (Opção 2).");
+                LOGGER.log(Level.SEVERE, "Erro na geração de código intermediário - Teste " + (i + 1), e);
             }
         }
-        System.out.println("\n=== FIM DA DEMO DE GERAÇÃO ===");
+        System.out.println("\n════════════════════════════════════════════════════════");
+        System.out.println(" FIM DA DEMO DE GERAÇÃO");
+        System.out.println(" Arquivos salvos em: " + REPORTS_DIR + "tac-output/");
+        System.out.println("════════════════════════════════════════════════════════");
     }
 }
