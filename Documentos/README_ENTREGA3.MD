@@ -8,11 +8,11 @@
 
 ## 📅 Informações da Entrega
 
-| Item | Descrição |
-|------|-----------|
-| **Data de Entrega** | 28/01/2026 |
-| **Objetivo** | Validar estrutura gramatical e verificar consistência semântica |
-| **Status** | ✅ Concluído |
+|       Item      |                          Descrição                              |
+|-----------------|-----------------------------------------------------------------|
+| Data de Entrega | 28/01/2026                                                      |
+| Objetivo        | Validar estrutura gramatical e verificar consistência semântica |
+| Status          | ✅ Concluído                                                   |
 
 ---
 
