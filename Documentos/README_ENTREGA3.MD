@@ -79,7 +79,7 @@ Exemplos de Erros Semânticos:
 | `Type.java`                      | `src/main/java/`                   | Enumeração de tipos da linguagem          |
 | `SemanticException.java`         | `src/main/java/`                   | Exceção customizada para erros semânticos |
 | `MiniPascalParserTest.java`      | `src/test/java/`                   | Testes unitários do parser                |
-| `README_ENTREGA3.md`             | Raiz do projeto                    | Este documento                            |
+| `README_ENTREGA3.md`             | `Documentos`                       | Este documento                            |
 
 
 ### Arquivos Gerados
@@ -179,11 +179,8 @@ public class MiniPascalSemanticVisitor extends miniPascalBaseVisitor<Type> {
     @Override
     public Type visitVariableDeclaration(miniPascalParser.VariableDeclarationContext ctx) {
         Type varType = getType(ctx.type());
-        
         for (var idCtx : ctx.identifierList().identifier()) {
             String varName = idCtx.getText();
-            
-            // Verifica redeclaração
             try {
                 symbolTable.declare(varName, varType);
             } catch (SemanticException e) {
@@ -197,8 +194,6 @@ public class MiniPascalSemanticVisitor extends miniPascalBaseVisitor<Type> {
     @Override
     public Type visitAssignmentStatement(miniPascalParser.AssignmentStatementContext ctx) {
         String varName = ctx.identifier().getText();
-        
-        // Verifica se variável foi declarada
         Type varType;
         try {
             varType = symbolTable.lookup(varName);
@@ -207,15 +202,11 @@ public class MiniPascalSemanticVisitor extends miniPascalBaseVisitor<Type> {
                                ": Variavel '" + varName + "' nao declarada");
             return null;
         }
-        
-        // Verifica tipo da expressão
         Type exprType = visit(ctx.expression());
-        
         if (varType != exprType && exprType != null) {
             System.err.println("ERRO SEMÂNTICO linha " + ctx.start.getLine() + 
                                ": Tipos incompativeis na atribuicao");
         }
-        
         return null;
     }
 }
@@ -227,8 +218,8 @@ Arquivo: src/main/java/SymbolTable.java
 
 public class SymbolTable {
     private List<Map<String, Type>> scopes;
-    
-    public SymbolTable() {
+
+public SymbolTable() {
         scopes = new ArrayList<>();
         enterScope(); // Escopo global
     }
@@ -245,11 +236,9 @@ public class SymbolTable {
     
     public void declare(String name, Type type) throws SemanticException {
         Map<String, Type> currentScope = scopes.get(scopes.size() - 1);
-        
         if (currentScope.containsKey(name)) {
             throw new SemanticException("Variavel '" + name + "' ja declarada neste escopo");
         }
-        
         currentScope.put(name, type);
     }
     
@@ -287,7 +276,6 @@ public enum Type {
     BOOLEAN,    // Verdadeiro/Falso
     VOID        // Sem tipo (para comandos)
 }
-
 
 ### Regras de Compatibilidade
 
@@ -409,11 +397,9 @@ mvn test -Dtest=MiniPascalParserTest#testVariavelNaoDeclarada
 
 🚀 Como Executar
 Passo 1: Compilar o Projeto
-
 mvn clean compile
 
 Passo 2: Executar Menu Interativo
-
 mvn exec:java
 ou
 java -cp target/classes Main
