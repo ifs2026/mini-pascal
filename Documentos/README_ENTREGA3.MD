@@ -84,11 +84,11 @@ Exemplos de Erros Semânticos:
 
 ### Arquivos Gerados
 
-| Arquivo | Localização | Descrição |
-|---------|-------------|-----------|
-| Árvores de Parse | `test-reports/parse-trees/` | Representação visual da AST |
-| Erros Semânticos | `test-reports/semantic-errors/` | Log de erros detectados |
-| Relatórios JUnit | `test-reports/surefire-reports/` | Resultados dos testes |
+| Arquivo          | Localização                      | Descrição                   |
+|------------------|----------------------------------|-----------------------------|
+| Árvores de Parse | `test-reports/parse-trees/`      | Representação visual da AST |
+| Erros Semânticos | `test-reports/semantic-errors/`  | Log de erros detectados     |
+| Relatórios JUnit | `test-reports/`                  | Resultados dos testes       |
 
 ## 🌳 Analisador Sintático
 
@@ -96,7 +96,7 @@ Exemplos de Erros Semânticos:
 
 | Funcionalidade | Descrição | Status |
 |----------------|-----------|--------|
-| **Validação de Estrutura** | Verifica conformidade com gramática BNF | ✅ Implementado |
+| Validação de Estrutura** | Verifica conformidade com gramática BNF | ✅ Implementado |
 | **Geração de AST** | Cria árvore sintática abstrata | ✅ Implementado |
 | **Detecção de Erros** | Identifica erros sintáticos com linha/coluna | ✅ Implementado |
 | **Mensagens Descritivas** | Erros com contexto e sugestões | ✅ Implementado |
