@@ -1,5 +1,5 @@
 === ERRO SEMÂNTICO DETECTADO ===
-Data/Hora: 2026-02-03T08:37:26.831206500
+Data/Hora: 2026-02-03T08:54:33.446591200
 Teste: teste5_variavel_nao_declarada
 ================================
 
