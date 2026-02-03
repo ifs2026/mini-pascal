@@ -524,9 +524,9 @@ Visitor Pattern: Design Patterns (Gang of Four)
 
 ## 📝 Histórico de Versões
 
-| Versão | Data       | Descrição                 | Autor              |
-|--------|------------|---------------------------|--------------------|
-| 1.0    | 28/01/2026 | Versão inicial da entrega | Equipe Mini-Pascal |
+| Versão | Data       | Descrição                  | Autor              |
+|--------|------------|----------------------------|--------------------|
+| 1.0    | 28/01/2026 | Versão inicial da entrega 3 | Equipe Mini-Pascal |
 
 👥 Autores
 
