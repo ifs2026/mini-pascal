@@ -98,7 +98,7 @@ public class Main {
         System.out.println("\n LOCALIZAÇÃO DOS RELATÓRIOS DE TESTES:");
         System.out.println("════════════════════════════════════════════════════════");
         System.out.println(" Pasta principal: " + REPORTS_DIR);
-        System.out.println("   ├── surefire-reports/     (Relatórios JUnit XML/TXT)");
+        System.out.println("   ├──                       (Relatórios JUnit XML/TXT)");
         System.out.println("   ├── tac-output/           (Código Intermediário .tac)");
         System.out.println("   ├── parse-trees/          (Árvores de Parse .txt)");
         System.out.println("   ├── lexer-tokens/         (Tokens do Lexer .txt)");
@@ -355,7 +355,6 @@ public class Main {
               if x > 15 then y := 1 else y := 0;
             end.""";
 
-        // AJUSTE: Removido FOR (não estava implementado, causava erro)
         String teste2 = """
             program ExemploAvancado;
             var x, y, resultado: integer;
