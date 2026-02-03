@@ -784,12 +784,12 @@ end.
 📊 Precedência de Operadores
 A precedência define a ordem de avaliação das operações em expressões complexas.
 
-| Precedência | Operadores | Tipo | Associatividade | Exemplo |
-|-------------|------------|------|-----------------|---------|
-| **1 (Mais alta)** | `not`, `+` (unário), `-` (unário) | Unários | Direita | `not true`, `-x`, `+5` |
-| **2** | `*`, `/`, `and` | Multiplicativos | Esquerda | `a * b`, `x / y`, `p and q` |
-| **3** | `+`, `-`, `or` | Aditivos | Esquerda | `a + b`, `x - y`, `p or q` |
-| **4 (Mais baixa)** | `=`, `<>`, `<`, `<=`, `>`, `>=` | Relacionais | Não associativo | `a = b`, `x > 10` |
+| Precedência    | Operadores                        | Tipo            | Associatividade | Exemplo                     |
+|----------------|-----------------------------------|-----------------|-----------------|-----------------------------|
+| 1 (Mais alta)  | `not`, `+` (unário), `-` (unário) | Unários         | Direita         | `not true`, `-x`, `+5`      |
+| 2              | `*`, `/`, `and`                   | Multiplicativos | Esquerda        | `a * b`, `x / y`, `p and q` |
+| 3              | `+`, `-`, `or`                    | Aditivos        | Esquerda        | `a + b`, `x - y`, `p or q`  |
+| 4 (Mais baixa) | `=`, `<>`, `<`, `<=`, `>`, `>=`   | Relacionais     | Não associativo | `a = b`, `x > 10`           |
 
 Exemplos de Avaliação
 
@@ -998,9 +998,9 @@ Compilers: Principles, Techniques, and Tools - Aho, Lam, Sethi, Ullman (Dragon B
 
 ## 📝 Histórico de Versões
 
-| Versão | Data | Descrição | Autor |
-|--------|------|-----------|-------|
-| 1.0 | 14/01/2026 | Versão inicial da entrega | Equipe Mini-Pascal |
+| Versão | Data       | Descrição                 | Autor              |
+|--------|------------|---------------------------|--------------------|
+| 1.0    | 14/01/2026 | Versão inicial da entrega | Equipe Mini-Pascal |
 
 
 Entrega 1 concluída com sucesso! ✅
