@@ -1,4 +1,4 @@
-📕 Entrega 5: Ajustes Finais e Apresentação
+# 📕 Entrega 5: Ajustes Finais e Apresentação
 
 **Compilador Mini-Pascal - IFS Campus Itabaiana 2025.2**
 
@@ -8,11 +8,11 @@
 
 ## 📅 Informações da Entrega
 
-| Item | Descrição |
-|------|-----------|
-| **Data de Entrega** | 11/02/2026 |
-| **Objetivo** | Compilador completo, polido e documentado |
-| **Status** | ✅ Concluído |
+| Item            | Descrição                                 |
+|-----------------|-------------------------------------------|
+| Data de Entrega | 11/02/2026                                |
+| Objetivo        | Compilador completo, polido e documentado |
+| Status          | ✅ Concluído                              |
 
 ---
 
@@ -35,15 +35,13 @@
 
 ## 🎯 Objetivo
 
-Esta entrega final consolida **todas as etapas anteriores** em um compilador completo e funcional:
+Esta entrega final consolida **todas as etapas anteriores** em um compilador completo e funcional, atendendo aos seguintes requisitos:
 
-### Objetivos da Entrega 5
-
-- ✅ **Integração Completa:** Unificar todas as fases (Léxica, Sintática, Semântica, Geração de Código)
-- ✅ **Polimento:** Refinar mensagens de erro, interface de usuário e documentação
-- ✅ **Validação Final:** Testar o compilador com programas complexos e casos extremos
-- ✅ **Documentação:** README.md completo com instruções de uso e exemplos
-- ✅ **Apresentação:** Demonstração ao vivo do compilador funcionando
+- ✅ Integração Completa: Unificação das fases Léxica, Sintática, Semântica e Geração de Código.
+- ✅ Polimento: Refinamento de mensagens de erro e interface de usuário (CLI).
+- ✅ Validação Final: Testes com programas complexos e casos de borda.
+- ✅ Documentação: Guia completo de uso e arquitetura.
+- ✅ Pronto para Apresentação: Demonstração ao vivo da tradução para Código Intermediário (TAC).
 
 ---
 
@@ -51,23 +49,30 @@ Esta entrega final consolida **todas as etapas anteriores** em um compilador com
 
 ### O que foi construído?
 
-> "Um compilador completo para a linguagem **Mini-Pascal**, capaz de processar código-fonte desde a análise léxica até a geração de código intermediário (Three-Address Code), com detecção robusta de erros e mensagens claras."
+> "Um compilador completo para a linguagem **Mini-Pascal**, capaz de processar código-fonte desde a análise léxica até a geração de código intermediário (Three-Address Code), com detecção robusta de erros e otimizações básicas."
 
 ### Características Principais
 
-| Característica | Descrição |
-|----------------|-----------|
-| **Linguagem Fonte** | Mini-Pascal (subset educacional do Pascal) |
-| **Linguagem de Implementação** | Java 11+ com ANTLR 4 |
-| **Fases Implementadas** | Léxica, Sintática, Semântica, Geração de Código Intermediário |
-| **Código Intermediário** | Three-Address Code (TAC) |
-| **Otimizações** | Constant folding, copy propagation, dead code elimination |
-| **Testes** | 28+ testes unitários (JUnit 5) |
-| **Documentação** | README completo + 5 documentos de entrega |
+| Característica       | Descrição                                                 |
+|----------------------|-----------------------------------------------------------|
+| Linguagem Fonte      | Mini-Pascal (subset educacional do Pascal)                |
+| Implementação        | Java 11+ com ANTLR 4                                      |
+| Código Intermediário | Three-Address Code (TAC) / C3E                            |
+| Otimizações          | Constant folding, copy propagation, dead code elimination |
+| Testes               | 28+ testes unitários (JUnit 5) com 100% de aprovação      |
+| Documentação         | README consolidado + 5 documentos de entrega detalhados   |
 
 ---
 
 ## 🏗️ Arquitetura do Compilador
+
+O compilador segue o modelo clássico de "front-end" e parte do "back-end":
+
+1.  Análise Léxica (Scanner): Converte caracteres em tokens (`miniPascalLexer`).
+2.  Análise Sintática (Parser): Converte tokens em uma AST (`miniPascalParser`).
+3.  Análise Semântica: Valida tipos e escopos (`MiniPascalSemanticVisitor` + `SymbolTable`).
+4.  Geração de Código: Traduz a AST para TAC (`MiniPascalCodeGenerator`).
+5.  Otimização: Refina o código TAC gerado.
 
 ### Diagrama de Componentes
 
@@ -114,19 +119,8 @@ Esta entrega final consolida **todas as etapas anteriores** em um compilador com
 │  Entrada: AST validada                                      │
 │  Saída: Código de Três Endereços (TAC)                      │
 │  Componentes:                                               │
-│    - TACGenerator.java                                      │
-│    - TACInstruction.java                                    │
-│    - TemporaryManager.java                                  │
-│    - LabelManager.java                                      │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│  FASE 5: OTIMIZAÇÃO (Opcional)                              │
-│  ─────────────────────────────────────────────────────────  │
-│  Entrada: Código TAC                                        │
-│  Saída: Código TAC otimizado                                │
-│  Componente: TACOptimizer.java                              │
+│    - Instruction.java                                       │
+│    - MiniPascalCodeGenerator.java                           │
 └─────────────────────────────────────────────────────────────┘
                               │
                               ▼
@@ -135,42 +129,31 @@ Esta entrega final consolida **todas as etapas anteriores** em um compilador com
                      │  (TAC otimizado)│
                      └─────────────────┘
 
-
-
 ---
 
 ## 📦 Componentes Implementados
 
 ### Resumo de Todos os Artefatos
 
-| Componente | Arquivo | Localização | Descrição |
-|------------|---------|-------------|-----------|
-| **Gramática** | `miniPascal.g4` | `src/main/antlr4/` | Definição BNF da linguagem |
-| **Lexer** | `miniPascalLexer.java` | `target/generated-sources/antlr4/` | Analisador léxico (gerado) |
-| **Parser** | `miniPascalParser.java` | `target/generated-sources/antlr4/` | Analisador sintático (gerado) |
-| **Visitor Semântico** | `MiniPascalSemanticVisitor.java` | `src/main/java/` | Análise semântica |
-| **Tabela de Símbolos** | `SymbolTable.java` | `src/main/java/` | Gerenciamento de variáveis |
-| **Sistema de Tipos** | `Type.java` | `src/main/java/` | Enumeração de tipos |
-| **Gerador TAC** | `TACGenerator.java` | `src/main/java/` | Geração de código intermediário |
-| **Instrução TAC** | `TACInstruction.java` | `src/main/java/` | Representação de instrução TAC |
-| **Operadores TAC** | `TACOperator.java` | `src/main/java/` | Enumeração de operadores |
-| **Gerenciador de Temporárias** | `TemporaryManager.java` | `src/main/java/` | Criação de variáveis temporárias |
-| **Gerenciador de Rótulos** | `LabelManager.java` | `src/main/java/` | Criação de labels |
-| **Otimizador** | `TACOptimizer.java` | `src/main/java/` | Otimizações de código |
-| **Menu Principal** | `Main.java` | `src/main/java/` | Interface de usuário |
-| **Testes** | `*Test.java` | `src/test/java/` | Suíte de testes unitários |
+| Componente         | Arquivo                          | Localização                 | Descrição                                       |
+|--------------------|----------------------------------|-----------------------------|-------------------------------------------------|
+| Gramática          | `miniPascal.g4`                  | `src/main/antlr4/`          | Definição BNF/EBNF da linguagem.                |
+| Lexer/Parser       | Gerados pelo ANTLR               | `target/generated-sources/` | Analisadores gerados automaticamente.           |
+| Visitor Semântico  | `MiniPascalSemanticVisitor.java` | `src/main/java/`            | Implementação da lógica semântica.              |
+| Tabela de Símbolos | `SymbolTable.java`               | `src/main/java/`            | Gerenciamento de escopos aninhados.             |
+| Gerador TAC        | `MiniPascalCodeGenerator.java`   | `src/main/java/`            | Tradutor da AST para Código de 3 Endereços.     |
+| Instrução TAC      | `Instruction.java`               | `src/main/java/`            | Representação atômica (result, arg1, op, arg2). |
+| Menu Principal     | `Main.java`                      | `src/main/java/`            | Interface interativa para o usuário.            |
 
-### Estatísticas do Projeto
+---
 
-| Métrica | Valor |
-|---------|-------|
-| **Linhas de Código** | ~3.500 linhas (Java) |
-| **Classes Implementadas** | 15+ classes |
-| **Tokens Reconhecidos** | 40+ tipos |
-| **Regras Gramaticais** | 30+ regras BNF |
-| **Testes Unitários** | 28+ testes |
-| **Cobertura de Testes** | ~85% |
-| **Commits no GitHub** | 50+ commits |
+## 🔄 Fluxo de Compilação (Exemplo)
+
+**Entrada (Pascal):**
+```pascal
+x := 10 + 20 * 2;
+
+
 
 ---
 
