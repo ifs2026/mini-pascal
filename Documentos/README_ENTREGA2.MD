@@ -8,11 +8,11 @@
 
 ## 📅 Informações da Entrega
 
-| Item | Descrição |
-|------|-----------|
-| **Data de Entrega** | 21/01/2026 |
-| **Objetivo** | Implementar o módulo de tokenização do código fonte |
-| **Status** | ✅ Concluído |
+| Item            | Descrição                                           |
+|-----------------|-----------------------------------------------------|
+| Data de Entrega | 21/01/2026                                          |
+| Objetivo        | Implementar o módulo de tokenização do código fonte |
+| Status          | ✅ Concluído                                        |
 
 ---
 
@@ -66,7 +66,6 @@ INTEGER_LITERAL(10)
 PLUS(+)
 IDENTIFIER(y)
 SEMICOLON(;)
-
 
 ---
 
