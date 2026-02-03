@@ -147,17 +147,46 @@ O compilador segue o modelo clássico de "front-end" e parte do "back-end":
 
 ---
 
+🚀 Como UsarPré-requisitos
+Java JDK 17+
+Maven 3.6+
+
+Instalação e Execução
+
+Compilar o projeto:
+   mvn clean compile
+
+Iniciar o Menu Interativo:
+   java -cp target/classes Main
+
+🖥️ Menu de Execução (Implementado no Main.java)
+Ao executar o projeto, você verá as seguintes opções:
+
+1 - Entrega 1: Gerar parser/lexer (mvn generate-sources)
+2 - Entrega 2: Compilar projeto (mvn compile)
+3 - Entrega 3: Rodar todos os testes (mvn test)
+4 - Testes apenas do Lexer
+5 - Testes apenas do Parser
+6 - Limpar projeto (mvn clean)
+7 - Demo Semântica (tabela de símbolos + escopos)
+8 - Entrega 4: Geração de Código Intermediário (C3E)
+9 - Ver localização dos relatórios de testes
+0 - Sair
+
+
 ## 🔄 Fluxo de Compilação (Exemplo)
 
 **Entrada (Pascal):**
 ```pascal
 x := 10 + 20 * 2;
 
+Saída (TAC):
 
+t0 = 20 * 2
+t1 = 10 + t0
+x = t1
 
 ---
-
-## 🔄 Fluxo de Compilação
 
 ### Exemplo Passo a Passo
 
@@ -172,7 +201,6 @@ begin
     resultado := x + y * 2;
     print('Resultado:', resultado);
 end.
-
 
 
 PASSO 1: Análise Léxica
@@ -220,8 +248,6 @@ DOT
 EOF
 
 
-
-
 PASSO 2: Análise SintáticaE
 ntrada: Tokens
 Saída: Árvore Sintática Abstrata (AST)
@@ -256,13 +282,13 @@ PASSO 3: Análise Semântica
 Entrada: AST
 ### Validações Realizadas:
 
-| Verificação | Resultado |
-|-------------|-----------|
-| Variável `x` declarada? | ✅ Sim (linha 3) |
-| Variável `y` declarada? | ✅ Sim (linha 3) |
-| Variável `resultado` declarada? | ✅ Sim (linha 3) |
-| Tipo de `x + y * 2`? | ✅ INTEGER (compatível) |
-| Atribuição `resultado := INTEGER`? | ✅ Válida |
+| Verificação                        | Resultado                |
+|------------------------------------|--------------------------|
+| Variável `x` declarada?            | ✅ Sim (linha 3)        |
+| Variável `y` declarada?            | ✅ Sim (linha 3)        |
+| Variável `resultado` declarada?    | ✅ Sim (linha 3)        |
+| Tipo de `x + y * 2`?               | ✅ INTEGER (compatível) |
+| Atribuição `resultado := INTEGER`? | ✅ Válida               |
 
 
 Saída: AST validada + Tabela de Símbolos
@@ -275,7 +301,6 @@ Tabela de Símbolos:
 │ y            │ INTEGER  │
 │ resultado    │ INTEGER  │
 └──────────────┴──────────┘
-
 
 
 PASSO 4: Geração de Código Intermediário
@@ -291,7 +316,6 @@ print "Resultado:"
 print resultado
 
 
-
 PASSO 5: Otimização (Opcional)
 Entrada: Código TAC
 Otimizações Aplicadas:
@@ -304,7 +328,6 @@ y = 20
 resultado = 50
 print "Resultado:"
 print resultado
-
 
 
 ✅ Exemplos Completos
@@ -336,6 +359,7 @@ categoria = "Maior de idade"
 L2:
 print "Categoria:"
 print categoria
+
 
 Exemplo 2: Programa com While
 Código Mini-Pascal:
@@ -482,48 +506,23 @@ print "Situacao:"
 print situacao
 
 
-
-
 ## 🧪 Testes e Validação
 
 ### Suíte de Testes Completa
 
-| Categoria | Testes | Status |
-|-----------|--------|--------|
-| **Análise Léxica** | 6 testes | ✅ 100% passando |
-| **Análise Sintática** | 6 testes | ✅ 100% passando |
-| **Análise Semântica** | 4 testes | ✅ 100% passando |
-| **Geração de Código** | 8 testes | ✅ 100% passando |
-| **Otimizações** | 4 testes | ✅ 100% passando |
-| **TOTAL** | **28 testes** | **✅ 100% passando** |
-
-### Casos de Teste Críticos
-
-| Teste | Descrição | Resultado |
-|-------|-----------|-----------|
-| `testProgramaVazio` | Programa sem variáveis ou comandos | ✅ Passou |
-| `testVariavelNaoDeclarada` | Uso de variável não declarada | ✅ Erro detectado |
-| `testRedeclaracao` | Declarar mesma variável duas vezes | ✅ Erro detectado |
-| `testTiposIncompativeis` | Atribuir STRING a INTEGER | ✅ Erro detectado |
-| `testDivisaoPorZero` | Detectar divisão por zero constante | ✅ Warning emitido |
-| `testIfSemElse` | Estrutura if sem bloco else | ✅ Passou |
-| `testWhileAninhado` | Laços while dentro de while | ✅ Passou |
-| `testForComBreak` | For com break (não suportado) | ✅ Erro detectado |
-| `testExpressaoComplexa` | `(a + b) * (c - d) / e` | ✅ Passou |
-| `testComentarios` | Ignorar comentários `{ }` e `//` | ✅ Passou |
-
+| Categoria         | Testes    | Status            |
+|-------------------|-----------|-------------------|
+| Análise Léxica    |  6 testes | ✅ 100% passando |
+| Análise Sintática |  6 testes | ✅ 100% passando |
+| Análise Semântica |  4 testes | ✅ 100% passando |
+| Geração de Código |  8 testes | ✅ 100% passando |
+| TOTAL             | 24 testes | ✅ 100% passando |
 
 
 Executar Todos os Testes
+
 # Executar toda a suíte de testes
 mvn test
-
-# Gerar relatório de cobertura
-mvn jacoco:report
-
-# Ver relatório HTML
-open target/site/jacoco/index.html
-
 
 
 ## 🚀 Como Usar
@@ -532,22 +531,21 @@ open target/site/jacoco/index.html
 
 | Requisito | Versão Mínima |
 |-----------|---------------|
-| **Java JDK** | 17+ |
-| **Maven** | 3.6+ |
-| **Git** | 2.0+ |
+| Java JDK  | 17+           |
+| Maven     | 3.6+          |
+| Git       | 2.0+          |
 
 
 Instalação
 # 1. Clonar o repositório
-git clone https://github.com/jeds2025/compilador-mini-pascal.git
-cd compilador-mini-pascal
+git clone https://github.com/ifs2026/mini-pascal.git
+cd compilador-minipascal
 
 # 2. Compilar o projeto
 mvn clean compile
 
 # 3. Executar testes (opcional)
 mvn test
-
 
 
 Uso Interativo (Menu)
@@ -613,22 +611,6 @@ x = 10
 y = 20
 t1 = x + y
 print t1
-
-
-## 🔧 Melhorias Implementadas
-
-### Melhorias da Entrega 5
-
-| Melhoria | Descrição | Status |
-|----------|-----------|--------|
-| **Mensagens de Erro Melhoradas** | Erros com linha, coluna e sugestões de correção | ✅ Implementado |
-| **Interface de Usuário** | Menu interativo com opções claras | ✅ Implementado |
-| **Relatórios Detalhados** | Geração de arquivos `.tac` e logs de erro | ✅ Implementado |
-| **Otimizações Avançadas** | Constant folding, copy propagation, dead code | ✅ Implementado |
-| **Suporte a Comentários** | Comentários `{ }` e `//` ignorados corretamente | ✅ Implementado |
-| **Validação de Escopo** | Variáveis locais vs. globais | ✅ Implementado |
-| **Testes de Integração** | Testes end-to-end de programas completos | ✅ Implementado |
-| **Documentação Completa** | README.md + 5 documentos de entrega | ✅ Implementado |
 
 
 Exemplo de Mensagem de Erro Melhorada
