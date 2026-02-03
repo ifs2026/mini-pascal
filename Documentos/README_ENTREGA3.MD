@@ -94,14 +94,14 @@ Exemplos de Erros Semânticos:
 
 ### Funcionalidades Implementadas
 
-| Funcionalidade | Descrição | Status |
-|----------------|-----------|--------|
-| Validação de Estrutura** | Verifica conformidade com gramática BNF | ✅ Implementado |
-| **Geração de AST** | Cria árvore sintática abstrata | ✅ Implementado |
-| **Detecção de Erros** | Identifica erros sintáticos com linha/coluna | ✅ Implementado |
-| **Mensagens Descritivas** | Erros com contexto e sugestões | ✅ Implementado |
+| Funcionalidade         | Descrição                                    | Status           |
+|------------------------|----------------------------------------------|------------------|
+| Validação de Estrutura | Verifica conformidade com gramática BNF      | ✅ Implementado |
+| Geração de AST         | Cria árvore sintática abstrata               | ✅ Implementado |
+| Detecção de Erros      | Identifica erros sintáticos com linha/coluna | ✅ Implementado |
+| Mensagens Descritivas  | Erros com contexto e sugestões               | ✅ Implementado |
 
-Regras Sintáticas Validadas
+### Regras Sintáticas Validadas
 
 // Estrutura do Programa
 program
@@ -140,8 +140,9 @@ term
     ;
 
 
-Exemplo de Detecção de Erro Sintático
-Código Inválido:
+// Exemplo de Detecção de Erro Sintático
+// Código Inválido:
+
 program Teste;
 var x: integer
 begin  // ❌ ERRO: Falta ';' após declaração de variável
@@ -156,15 +157,16 @@ line 2:14 mismatched input 'begin' expecting {';', ','}
 
 ### Funcionalidades Implementadas
 
-| Funcionalidade | Descrição | Status |
-|----------------|-----------|--------|
-| **Verificação de Tipos** | Valida compatibilidade em operações | ✅ Implementado |
-| **Declaração de Variáveis** | Verifica se variável foi declarada antes do uso | ✅ Implementado |
-| **Controle de Escopos** | Gerencia escopos aninhados (global/local) | ✅ Implementado |
-| **Detecção de Redeclaração** | Impede declarar mesma variável duas vezes | ✅ Implementado |
+| Funcionalidade           | Descrição                                       | Status           |
+|--------------------------|-------------------------------------------------|------------------|
+| Verificação de Tipos     | Valida compatibilidade em operações             | ✅ Implementado |
+| Declaração de Variáveis  | Verifica se variável foi declarada antes do uso | ✅ Implementado |
+| Controle de Escopos      | Gerencia escopos aninhados (global/local)       | ✅ Implementado |
+| Detecção de Redeclaração | Impede declarar mesma variável duas vezes       | ✅ Implementado |
 
 
-Implementação do Visitor Semântico
+// Implementação do Visitor Semântico
+
 Arquivo: src/main/java/MiniPascalSemanticVisitor.java
 
 public class MiniPascalSemanticVisitor extends miniPascalBaseVisitor<Type> {
@@ -219,7 +221,8 @@ public class MiniPascalSemanticVisitor extends miniPascalBaseVisitor<Type> {
 }
 
 📊 Tabela de Símbolos
-Estrutura
+📊 Estrutura
+
 Arquivo: src/main/java/SymbolTable.java
 
 public class SymbolTable {
@@ -265,16 +268,18 @@ public class SymbolTable {
 
 ### Funcionalidades
 
-| Método | Descrição |
-|--------|-----------|
-| `enterScope()` | Cria novo escopo (ao entrar em bloco `begin...end`) |
-| `exitScope()` | Remove escopo atual (ao sair de bloco) |
-| `declare(name, type)` | Declara variável no escopo atual |
-| `lookup(name)` | Busca variável em todos os escopos (do mais interno ao mais externo) |
+| Método                | Descrição                                                            |
+|-----------------------|----------------------------------------------------------------------|
+| `enterScope()`        | Cria novo escopo (ao entrar em bloco `begin...end`)                  |
+| `exitScope()`         | Remove escopo atual (ao sair de bloco)                               |
+| `declare(name, type)` | Declara variável no escopo atual                                     |
+| `lookup(name)`        | Busca variável em todos os escopos (do mais interno ao mais externo) |
 
 
 🎨 Sistema de Tipos
+
 Arquivo: src/main/java/Type.java
+
 public enum Type {
     INTEGER,    // Números inteiros
     REAL,       // Números reais (ponto flutuante)
@@ -286,15 +291,16 @@ public enum Type {
 
 ### Regras de Compatibilidade
 
-| Operação | Tipos Aceitos | Tipo Resultante | Exemplo |
-|----------|---------------|-----------------|---------|
-| `+`, `-`, `*`, `/` | `INTEGER` + `INTEGER` | `INTEGER` | `5 + 3 = 8` |
-| `+`, `-`, `*`, `/` | `REAL` + `REAL` | `REAL` | `5.5 + 2.3 = 7.8` |
-| `+`, `-`, `*`, `/` | `INTEGER` + `REAL` | `REAL` | `5 + 2.5 = 7.5` |
-| `=`, `<>`, `<`, `>`, `<=`, `>=` | Mesmo tipo | `BOOLEAN` | `x > 10` |
-| `and`, `or`, `not` | `BOOLEAN` | `BOOLEAN` | `true and false` |
+| Operação                        | Tipos Aceitos         | Tipo Resultante | Exemplo           |
+|---------------------------------|-----------------------|-----------------|-------------------|
+| `+`, `-`, `*`, `/`              | `INTEGER` + `INTEGER` | `INTEGER`       | `5 + 3 = 8`       |
+| `+`, `-`, `*`, `/`              | `REAL` + `REAL`       | `REAL`          | `5.5 + 2.3 = 7.8` |
+| `+`, `-`, `*`, `/`              | `INTEGER` + `REAL`    | `REAL`          | `5 + 2.5 = 7.5`   |
+| `=`, `<>`, `<`, `>`, `<=`, `>=` | Mesmo tipo            | `BOOLEAN`       | `x > 10`          |
+| `and`, `or`, `not`              | `BOOLEAN`             | `BOOLEAN`       | `true and false`  |
 
 ✅ Exemplos de Validação
+
 Exemplo 1: Programa Válido
 program ExemploValido;
 var
@@ -310,6 +316,7 @@ begin
 end.
 
 Análise Semântica:
+
 ✅ Todas as variáveis declaradas antes do uso
 ✅ Tipos compatíveis nas operações
 ✅ Conversão implícita de INTEGER para REAL permitida
@@ -367,44 +374,50 @@ end.
 
 
 🧪 Testes Implementados
+
 Arquivo: src/test/java/MiniPascalParserTest.java
 
 ### Testes Sintáticos
 
-| Teste | Descrição | Status |
-|-------|-----------|--------|
-| `testProgramaValido()` | Valida programa completo | ✅ Passou |
-| `testIfElse()` | Valida estrutura condicional | ✅ Passou |
-| `testWhile()` | Valida laço while | ✅ Passou |
-| `testFor()` | Valida laço for (to/downto) | ✅ Passou |
+| Teste                         | Descrição                        | Status     |
+|-------------------------------|----------------------------------|------------|
+| `testProgramaValido()`        | Valida programa completo         | ✅ Passou |
+| `testIfElse()`                | Valida estrutura condicional     | ✅ Passou |
+| `testWhile()`                 | Valida laço while                | ✅ Passou |
+| `testFor()`                   | Valida laço for (to/downto)      | ✅ Passou |
 | `testExpressoesAritmeticas()` | Valida precedência de operadores | ✅ Passou |
-| `testErroSintaxe()` | Detecta erro sintático | ✅ Passou |
+| `testErroSintaxe()`           | Detecta erro sintático           | ✅ Passou |
 
 
 ### Testes Semânticos
 
-| Teste | Descrição | Status |
-|-------|-----------|--------|
+| Teste                        | Descrição                             | Status     |
+|------------------------------|---------------------------------------|------------|
 | `testVariavelNaoDeclarada()` | Detecta uso de variável não declarada | ✅ Passou |
-| `testRedeclaracao()` | Detecta redeclaração de variável | ✅ Passou |
-| `testTiposIncompativeis()` | Detecta incompatibilidade de tipos | ✅ Passou |
-| `testEscoposAninhados()` | Valida controle de escopos | ✅ Passou |
+| `testRedeclaracao()`         | Detecta redeclaração de variável      | ✅ Passou |
+| `testTiposIncompativeis()`   | Detecta incompatibilidade de tipos    | ✅ Passou |
+| `testEscoposAninhados()`     | Valida controle de escopos            | ✅ Passou |
 
 
-Executar Testes
+🚀 Executar Testes
 # Todos os testes do parser
+
 mvn test -Dtest=MiniPascalParserTest
 
 # Teste específico
 mvn test -Dtest=MiniPascalParserTest#testVariavelNaoDeclarada
 
-
 🚀 Como Executar
 Passo 1: Compilar o Projeto
+
 mvn clean compile
 
 Passo 2: Executar Menu Interativo
+
+mvn exec:java
+ou
 java -cp target/classes Main
+
 Selecionar Opção 5:
 5 - Testes apenas do Parser
 
@@ -414,7 +427,7 @@ Selecionar Opção 7:
 
 Saída Esperada:
 ╔════════════════════════════════════════════════════════╗
-║   DEMO SEMÂNTICA (Tabela de Símbolos + Escopos)       ║
+║   DEMO SEMÂNTICA (Tabela de Símbolos + Escopos)        ║
 ╚════════════════════════════════════════════════════════╝
 
 📌 Escopo global:
@@ -441,7 +454,6 @@ Saída Esperada:
 
 ✅ Demo finalizada!
 
-
 📂 Relatórios Gerados
 Localização dos Arquivos
 
@@ -457,12 +469,10 @@ test-reports/
 │   ├── test_variavel_nao_declarada.txt
 │   ├── test_redeclaracao.txt
 │   └── test_tipos_incompativeis.txt
-│
-└── surefire-reports/               # Relatórios JUnit
-    ├── MiniPascalParserTest.txt
-    └── TEST-MiniPascalParserTest.xml
-
-
+|
+│                                   # Relatórios JUnit
+├── MiniPascalParserTest.txt
+└── TEST-MiniPascalParserTest.xml
 
 Exemplo de Árvore Sintática
 Arquivo: test-reports/parse-trees/teste1_programa_valido_tree.txt
@@ -483,59 +493,52 @@ Arquivo: test-reports/parse-trees/teste1_programa_valido_tree.txt
   . 
   <EOF>)
 
-
-
 ## 🎯 Resumo da Entrega
 
-| Item | Status |
-|------|--------|
-| Parser Implementado | ✅ Completo |
-| AST Gerada | ✅ Sim |
-| Análise Semântica | ✅ Completa |
-| Tabela de Símbolos | ✅ Com suporte a escopos |
-| Sistema de Tipos | ✅ 4 tipos implementados |
-| Testes Unitários | ✅ 10 testes passando |
-| Relatórios Gerados | ✅ Árvores e erros |
-| Documentação | ✅ Completa |
+| Item                | Status                    |
+|---------------------|---------------------------|
+| Parser Implementado | ✅ Completo              |
+| AST Gerada          | ✅ Sim                   |
+| Análise Semântica   | ✅ Completa              |             
+| Tabela de Símbolos  | ✅ Com suporte a escopos |
+| Sistema de Tipos    | ✅ 4 tipos implementados |
+| Testes Unitários    | ✅ 10 testes passando    |
+| Relatórios Gerados  | ✅ Árvores e erros       |
+| Documentação        | ✅ Completa              |
 
 ## 🎓 Conceitos Aplicados
 
-| Conceito | Descrição | Implementação |
-|----------|-----------|---------------|
-| **AST** | Árvore Sintática Abstrata | Gerada automaticamente pelo ANTLR |
-| **Visitor Pattern** | Padrão de projeto para travessia da AST | `MiniPascalSemanticVisitor.java` |
-| **Tabela de Símbolos** | Estrutura para armazenar variáveis e tipos | `SymbolTable.java` |
-| **Escopos Aninhados** | Suporte a blocos `begin...end` | `enterScope()` / `exitScope()` |
-| **Verificação de Tipos** | Compatibilidade em operações | Regras no Visitor |
-
-
+| Conceito             | Descrição                                  | Implementação                     |
+|----------------------|--------------------------------------------|-----------------------------------|
+| AST                  | Árvore Sintática Abstrata                  | Gerada automaticamente pelo ANTLR |
+| Visitor Pattern      | Padrão de projeto para travessia da AST    | `MiniPascalSemanticVisitor.java`  |
+| Tabela de Símbolos   | Estrutura para armazenar variáveis e tipos | `SymbolTable.java`                |
+| Escopos Aninhados    | Suporte a blocos `begin...end`             | `enterScope()` / `exitScope()`    |
+| Verificação de Tipos | Compatibilidade em operações               | Regras no Visitor                 |
 
 📚 Referências
+
 Dragon Book: Compilers: Principles, Techniques, and Tools (Aho, Sethi, Ullman)
 ANTLR 4 Documentation: https://www.antlr.org/
 Visitor Pattern: Design Patterns (Gang of Four)
 
-
 ## 📝 Histórico de Versões
 
-| Versão | Data | Descrição | Autor |
-|--------|------|-----------|-------|
-| 1.0 | 28/01/2026 | Versão inicial da entrega | Equipe Mini-Pascal |
+| Versão | Data       | Descrição                 | Autor              |
+|--------|------------|---------------------------|--------------------|
+| 1.0    | 28/01/2026 | Versão inicial da entrega | Equipe Mini-Pascal |
 
 👥 Autores
+
 Enaldo Dantas  - jose.santos259@academico.ifs.edu.br
 Agnaldo Neto   - jose.neto044@academico.ifs.edu.br
 Vitorio Mota   - vitorio.mota085@academico.ifs.edu.br
 Lucas Oliveira - lucas.oliveira031@academico.ifs.edu.br
 
-
-
 📞 ContatoPara dúvidas sobre esta entrega:
 Email: jeds@outlook.com.br
-GitHub: https://github.com/jeds2025
+GitHub: https://github.com/ifs2026
 
 Entrega 3 concluída com sucesso! ✅
 Desenvolvido para IFS Campus Itabaiana - 2025.2
 Disciplina: LINGUAGENS FORMAIS, AUTÔMATOS E COMPILADORES
-
-
