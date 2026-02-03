@@ -1,5 +1,5 @@
 === ERRO SEMÂNTICO DETECTADO ===
-Data/Hora: 2026-02-03T08:54:33.450972200
+Data/Hora: 2026-02-03T19:43:01.115502300
 Teste: teste6_redeclaracao_mesmo_escopo
 ================================
 
