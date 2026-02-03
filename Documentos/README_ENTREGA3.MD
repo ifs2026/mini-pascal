@@ -71,15 +71,15 @@ Exemplos de Erros Semânticos:
 
 ### Arquivos Principais
 
-| Arquivo | Localização | Descrição |
-|---------|-------------|-----------|
-| `miniPascalParser.java` | `target/generated-sources/antlr4/` | Parser gerado pelo ANTLR |
-| `MiniPascalSemanticVisitor.java` | `src/main/java/` | Visitor para análise semântica |
-| `SymbolTable.java` | `src/main/java/` | Tabela de símbolos com suporte a escopos |
-| `Type.java` | `src/main/java/` | Enumeração de tipos da linguagem |
-| `SemanticException.java` | `src/main/java/` | Exceção customizada para erros semânticos |
-| `MiniPascalParserTest.java` | `src/test/java/` | Testes unitários do parser |
-| `README_ENTREGA3.md` | Raiz do projeto | Este documento |
+| Arquivo                          | Localização                        | Descrição                                 |
+|----------------------------------|------------------------------------|-------------------------------------------|
+| `miniPascalParser.java`          | `target/generated-sources/antlr4/` | Parser gerado pelo ANTLR                  |
+| `MiniPascalSemanticVisitor.java` | `src/main/java/`                   | Visitor para análise semântica            |
+| `SymbolTable.java`               | `src/main/java/`                   | Tabela de símbolos com suporte a escopos  |
+| `Type.java`                      | `src/main/java/`                   | Enumeração de tipos da linguagem          |
+| `SemanticException.java`         | `src/main/java/`                   | Exceção customizada para erros semânticos |
+| `MiniPascalParserTest.java`      | `src/test/java/`                   | Testes unitários do parser                |
+| `README_ENTREGA3.md`             | Raiz do projeto                    | Este documento                            |
 
 
 ### Arquivos Gerados
