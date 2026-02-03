@@ -590,5 +590,5 @@ Lucas Oliveira - lucas.oliveira031@academico.ifs.edu.br
 Entrega 2 concluída com sucesso! ✅
 Desenvolvido para IFS Campus Itabaiana - 2025.2
 Disciplina: LINGUAGENS FORMAIS, AUTÔMATOS E COMPILADORES
-
+Professor: Marlos Tacio Silva
 
