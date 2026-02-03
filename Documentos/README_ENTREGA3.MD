@@ -542,3 +542,4 @@ GitHub: https://github.com/ifs2026
 Entrega 3 concluída com sucesso! ✅
 Desenvolvido para IFS Campus Itabaiana - 2025.2
 Disciplina: LINGUAGENS FORMAIS, AUTÔMATOS E COMPILADORES
+Professor: Marlos Tacio Silva
