@@ -5,7 +5,7 @@ import java.util.List;
  * Esta classe percorre a árvore gerada pelo ANTLR e traduz os comandos para
  * Código de Três Endereços (C3E). Cada método 'visit' lida com uma regra da gramática.
  * 
- * AJUSTES IMPLEMENTADOS:
+ * AJUSTES FEITOS:
  * - Comentários expandidos em blocos e linhas
  * - Implementação completa de FOR (TO/DOWNTO)
  * - Correção de acesso a factor() sem índice
@@ -408,15 +408,12 @@ public class MiniPascalCodeGenerator extends miniPascalBaseVisitor<String> {
         return null;
     }
     /**
-     * Salva as instruções geradas em um arquivo de texto.
-     * Útil para persistir o código intermediário gerado.
+     * Salva as instruções geradas em um arquivo de texto. (não acumula).
      * 
-     * AJUSTE: Sempre sobrescreve arquivo (não acumula).
-     * 
-     * @param filename Nome do arquivo de saída (ex: "output.tac")
+     * @param filename Nome do arquivo de saída
      */
     public void saveToFile(String filename) {
-        // AJUSTE: Salvar em pasta específica
+        // Salvar em pasta específica
         String outputDir = "test-reports/tac-output/";
         java.io.File dir = new java.io.File(outputDir);
         if (!dir.exists()) {

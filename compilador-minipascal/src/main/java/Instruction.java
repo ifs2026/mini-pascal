@@ -20,7 +20,6 @@
  * AJUSTES IMPLEMENTADOS:
  * - Comentários expandidos com exemplos
  * - Suporte a operadores lógicos (AND, OR, NOT)
- * - Formatação melhorada para debugging
  */
 public class Instruction {
     String result; // Onde o resultado será armazenado ou o nome de um Label
