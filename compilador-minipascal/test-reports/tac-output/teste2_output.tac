@@ -1,5 +1,5 @@
 === CÓDIGO INTERMEDIÁRIO GERADO (C3E) ===
-Data/Hora: 2026-02-04T17:34:41.378984200
+Data/Hora: 2026-02-04T19:21:20.345704300
 Total de Instruções: 13
 ===========================================
 
