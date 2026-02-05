@@ -1,5 +1,5 @@
 === ÁRVORE DE PARSE (AST) ===
-Data/Hora: 2026-02-04T23:02:31.651562100
+Data/Hora: 2026-02-04T23:06:39.638257300
 =============================
 
 program (programp;varx:integer;beginifx>0thenx:=x-1elsex:=0;end.<EOF>)
