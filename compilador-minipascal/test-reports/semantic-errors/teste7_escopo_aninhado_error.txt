@@ -1,5 +1,5 @@
 === ERRO SEMÂNTICO DETECTADO ===
-Data/Hora: 2026-02-04T19:14:52.167050400
+Data/Hora: 2026-02-04T23:02:31.699747100
 Teste: teste7_escopo_aninhado
 ================================
 
