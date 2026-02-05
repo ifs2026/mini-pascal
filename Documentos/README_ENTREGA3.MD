@@ -12,7 +12,7 @@
 |-----------------|-----------------------------------------------------------------|
 | Data de Entrega | 28/01/2026                                                      |
 | Objetivo        | Validar estrutura gramatical e verificar consistência semântica |
-| Status          | ✅ Concluído                                                   |
+| Status          | ✅ Concluído                                                    |
 
 ---
 
@@ -510,8 +510,8 @@ Visitor Pattern: Design Patterns (Gang of Four)
 
 ## 📝 Histórico de Versões
 
-| Versão | Data       | Descrição                  | Autor              |
-|--------|------------|----------------------------|--------------------|
+| Versão | Data       | Descrição                   | Autor              |
+|--------|------------|-----------------------------|--------------------|
 | 1.0    | 28/01/2026 | Versão inicial da entrega 3 | Equipe Mini-Pascal |
 
 👥 Autores

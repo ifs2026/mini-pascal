@@ -638,23 +638,23 @@ Mensagem de Erro:
 
 ### Funcionalidades Não Implementadas (Conforme Escopo)
 
-| Funcionalidade | Status | Justificativa |
-|----------------|--------|---------------|
-| **Funções/Procedimentos** | ❌ Não implementado | Fora do escopo do projeto |
-| **Arrays/Vetores** | ❌ Não implementado | Fora do escopo do projeto |
-| **Structs/Records** | ❌ Não implementado | Fora do escopo do projeto |
-| **Ponteiros** | ❌ Não implementado | Fora do escopo do projeto |
-| **Geração de Assembly** | ❌ Não implementado | Etapa futura (não coberta na disciplina) |
-| **Geração de Executável** | ❌ Não implementado | Etapa futura (não coberta na disciplina) |
+| Funcionalidade        | Status              | Justificativa                            |
+|-----------------------|---------------------|------------------------------------------|
+| Funções/Procedimentos | ❌ Não implementado | Fora do escopo do projeto                |
+| Arrays/Vetores        | ❌ Não implementado | Fora do escopo do projeto                |
+| Structs/Records       | ❌ Não implementado | Fora do escopo do projeto                |
+| Ponteiros             | ❌ Não implementado | Fora do escopo do projeto                |
+| Geração de Assembly   | ❌ Não implementado | Etapa futura (não coberta na disciplina) |
+| Geração de Executável | ❌ Não implementado | Etapa futura (não coberta na disciplina) |
 
 ### Limitações Técnicas
 
-| Limitação | Descrição | Workaround |
-|-----------|-----------|------------|
-| **Tipo STRING** | Operações limitadas (apenas atribuição e print) | Usar apenas para saída |
-| **Divisão por Zero** | Detectada apenas em constantes | Adicionar validação em runtime futuramente |
-| **Overflow** | Não há verificação de overflow de inteiros | Usar valores dentro do range de `int` |
-| **Recursão** | Não suportada (sem funções) | N/A |
+| Limitação        | Descrição                                       | Workaround                                 |
+|------------------|-------------------------------------------------|--------------------------------------------|
+| Tipo STRING      | Operações limitadas (apenas atribuição e print) | Usar apenas para saída                     |
+| Divisão por Zero | Detectada apenas em constantes                  | Adicionar validação em runtime futuramente |
+| Overflow         | Não há verificação de overflow de inteiros      | Usar valores dentro do range de `int`      |
+| Recursão         | Não suportada (sem funções)                     | N/A                                        |
 
 🎤 Apresentação
 Roteiro de Demonstração
@@ -756,16 +756,16 @@ Slide 5: Resultados
 
 ### O que foi Alcançado
 
-| Objetivo | Status |
-|----------|--------|
-| Implementar analisador léxico | ✅ Completo |
-| Implementar analisador sintático | ✅ Completo |
-| Implementar analisador semântico | ✅ Completo |
-| Gerar código intermediário (TAC) | ✅ Completo |
-| Aplicar otimizações | ✅ Completo |
-| Criar testes unitários | ✅ 28 testes (100%) |
-| Documentar o projeto | ✅ Completo |
-| Apresentar o compilador | ✅ Pronto |
+| Objetivo                         | Status              |
+|----------------------------------|---------------------|
+| Implementar analisador léxico    | ✅ Completo         |
+| Implementar analisador sintático | ✅ Completo         |
+| Implementar analisador semântico | ✅ Completo         |
+| Gerar código intermediário (TAC) | ✅ Completo         |
+| Aplicar otimizações              | ✅ Completo         |
+| Criar testes unitários           | ✅ 28 testes (100%) |
+| Documentar o projeto             | ✅ Completo         |
+| Apresentar o compilador          | ✅ Pronto           |
 
 Aprendizados
 Conceitos de Compiladores:
@@ -792,55 +792,55 @@ Ferramentas:
 
 ### Desafios Enfrentados
 
-| Desafio | Solução |
-|---------|---------|
-| **Precedência de Operadores** | Definir regras gramaticais corretas na gramática ANTLR |
-| **Gerenciamento de Escopos** | Implementar pilha de escopos na tabela de símbolos |
-| **Geração de Rótulos** | Criar gerenciador de labels para estruturas de controle |
-| **Otimizações** | Implementar passes de otimização separados e modulares |
-| **Mensagens de Erro** | Capturar contexto (linha/coluna) e fornecer sugestões |
+| Desafio                   | Solução                                                 |
+|---------------------------|---------------------------------------------------------|
+| Precedência de Operadores | Definir regras gramaticais corretas na gramática ANTLR  |
+| Gerenciamento de Escopos  | Implementar pilha de escopos na tabela de símbolos      |
+| Geração de Rótulos        | Criar gerenciador de labels para estruturas de controle |
+| Otimizações               | Implementar passes de otimização separados e modulares  |
+| Mensagens de Erro         | Capturar contexto (linha/coluna) e fornecer sugestões   |
 
 ---
 
 ### Próximos Passos (Futuro)
 
-| Melhoria | Descrição |
-|----------|-----------|
-| **Geração de Assembly** | Traduzir TAC para Assembly x86/ARM |
-| **Geração de Executável** | Criar binário executável (.exe/.out) |
-| **Suporte a Funções** | Implementar chamadas de função e pilha |
-| **Arrays** | Adicionar suporte a vetores e matrizes |
-| **Otimizações Avançadas** | Loop unrolling, register allocation |
-| **IDE/Editor** | Criar plugin para VSCode com syntax highlighting |
+| Melhoria              | Descrição                                        |
+|-----------------------|--------------------------------------------------|
+| Geração de Assembly   | Traduzir TAC para Assembly x86/ARM               |
+| Geração de Executável | Criar binário executável (.exe/.out)             |
+| Suporte a Funções     | Implementar chamadas de função e pilha           |
+| Arrays                | Adicionar suporte a vetores e matrizes           |
+| Otimizações Avançadas | Loop unrolling, register allocation              |
+| IDE/Editor            | Criar plugin para VSCode com syntax highlighting |
 
 ---
 
 ## 📊 Resumo Final
 
-| Item | Status |
-|------|--------|
-| Gramática BNF Definida | ✅ Completa |
-| Analisador Léxico | ✅ 40+ tokens |
-| Analisador Sintático | ✅ AST gerada |
-| Analisador Semântico | ✅ Tabela de símbolos + tipos |
-| Gerador de Código TAC | ✅ 11 tipos de instruções |
-| Otimizações | ✅ 4 técnicas |
-| Testes Unitários | ✅ 28 testes (100%) |
-| Documentação | ✅ README + 5 entregas |
-| Apresentação | ✅ Preparada |
-| **PROJETO COMPLETO** | **✅ 100% CONCLUÍDO** |
+| Item                   | Status                        |
+|------------------------|-------------------------------|
+| Gramática BNF Definida | ✅ Completa                   |
+| Analisador Léxico      | ✅ 40+ tokens                 |
+| Analisador Sintático   | ✅ AST gerada                 |
+| Analisador Semântico   | ✅ Tabela de símbolos + tipos |
+| Gerador de Código TAC  | ✅ 11 tipos de instruções     |
+| Otimizações            | ✅ 4 técnicas                 |
+| Testes Unitários       | ✅ 28 testes (100%)           |
+| Documentação           | ✅ README + 5 entregas        |
+| Apresentação           | ✅ Preparada                  |
+| PROJETO COMPLETO       | ✅ 100% CONCLUÍDO             |
 
 ---
 
 ## 📝 Histórico de Versões
 
-| Versão | Data | Descrição | Autor |
-|--------|------|-----------|-------|
-| 1.0 | 14/01/2026 | Gramática BNF definida | Equipe Mini-Pascal |
-| 2.0 | 21/01/2026 | Analisador léxico implementado | Equipe Mini-Pascal |
-| 3.0 | 28/01/2026 | Analisadores sintático e semântico | Equipe Mini-Pascal |
-| 4.0 | 04/02/2026 | Gerador de código intermediário | Equipe Mini-Pascal |
-| 5.0 | 11/02/2026 | **Versão final completa** | Equipe Mini-Pascal |
+| Versão | Data       | Descrição                          | Autor              |
+|--------|------------|------------------------------------|--------------------|
+| 1.0    | 14/01/2026 | Gramática BNF definida             | Equipe Mini-Pascal |
+| 2.0    | 21/01/2026 | Analisador léxico implementado     | Equipe Mini-Pascal |
+| 3.0    | 28/01/2026 | Analisadores sintático e semântico | Equipe Mini-Pascal |
+| 4.0    | 04/02/2026 | Gerador de código intermediário    | Equipe Mini-Pascal |
+| 5.0    | 11/02/2026 | Versão final completa              | Equipe Mini-Pascal |
 
 👥 Autores
 Enaldo Dantas  - jose.santos259@academico.ifs.edu.br
